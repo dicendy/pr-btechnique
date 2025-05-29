@@ -1,0 +1,789 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Construction Equipment Manager: Класс EquipmentModel</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Construction Equipment Manager<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Программа для учёта парка строительной техники</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('class_equipment_model.html','','class_equipment_model-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Класс EquipmentModel</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Модель данных для управления строительной техникой  
+ <a href="#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="equipmentmodel_8h_source.html">equipmentmodel.h</a>&gt;</code></p>
+<div class="dynheader">
+Граф наследования:EquipmentModel:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_equipment_model.png" alt=""/>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a7813ad00c37274839cc250b76b04678c" id="r_a7813ad00c37274839cc250b76b04678c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7813ad00c37274839cc250b76b04678c">EquipmentModel</a> (QObject *parent=nullptr)</td></tr>
+<tr class="memitem:a93edc059270c4ee12f0ef30571f8f22a" id="r_a93edc059270c4ee12f0ef30571f8f22a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a93edc059270c4ee12f0ef30571f8f22a">rowCount</a> (const QModelIndex &amp;parent=QModelIndex()) const override</td></tr>
+<tr class="memitem:aa0a730be483c81a1b77fa3ede64a2b12" id="r_aa0a730be483c81a1b77fa3ede64a2b12"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0a730be483c81a1b77fa3ede64a2b12">columnCount</a> (const QModelIndex &amp;parent=QModelIndex()) const override</td></tr>
+<tr class="memitem:aaa388005cc50fac14628b517948d386c" id="r_aaa388005cc50fac14628b517948d386c"><td class="memItemLeft" align="right" valign="top">QVariant&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa388005cc50fac14628b517948d386c">data</a> (const QModelIndex &amp;index, int role) const override</td></tr>
+<tr class="memitem:a09cf9a30c577446977b2887fd613c132" id="r_a09cf9a30c577446977b2887fd613c132"><td class="memItemLeft" align="right" valign="top">QVariant&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a09cf9a30c577446977b2887fd613c132">headerData</a> (int section, Qt::Orientation orientation, int role) const override</td></tr>
+<tr class="memitem:a5d5cebaa987ffcd4dd509ecb9c3aa181" id="r_a5d5cebaa987ffcd4dd509ecb9c3aa181"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d5cebaa987ffcd4dd509ecb9c3aa181">setData</a> (const QModelIndex &amp;index, const QVariant &amp;value, int role) override</td></tr>
+<tr class="memitem:a6fbf8e66e98331cc97f68441ae1aedc6" id="r_a6fbf8e66e98331cc97f68441ae1aedc6"><td class="memItemLeft" align="right" valign="top">Qt::ItemFlags&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fbf8e66e98331cc97f68441ae1aedc6">flags</a> (const QModelIndex &amp;index) const override</td></tr>
+<tr class="memitem:a582483f00dcc0d3b99f386fcd745bb57" id="r_a582483f00dcc0d3b99f386fcd745bb57"><td class="memItemLeft" align="right" valign="top">QStringList&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a582483f00dcc0d3b99f386fcd745bb57">mimeTypes</a> () const override</td></tr>
+<tr class="memitem:a55a508debc27616a1adf33d27336a54c" id="r_a55a508debc27616a1adf33d27336a54c"><td class="memItemLeft" align="right" valign="top">QMimeData *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55a508debc27616a1adf33d27336a54c">mimeData</a> (const QModelIndexList &amp;indexes) const override</td></tr>
+<tr class="memitem:aa49dc7cacf4fd3cb39c814b0a8185976" id="r_aa49dc7cacf4fd3cb39c814b0a8185976"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa49dc7cacf4fd3cb39c814b0a8185976">dropMimeData</a> (const QMimeData *<a class="el" href="#aaa388005cc50fac14628b517948d386c">data</a>, Qt::DropAction action, int row, int column, const QModelIndex &amp;parent) override</td></tr>
+<tr class="memitem:a5fd0f241c9dfd3571058464d0724dcf5" id="r_a5fd0f241c9dfd3571058464d0724dcf5"><td class="memItemLeft" align="right" valign="top">Qt::DropActions&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5fd0f241c9dfd3571058464d0724dcf5">supportedDropActions</a> () const override</td></tr>
+<tr class="memitem:a79a8c917454f4c1f137a3087bd5a1c3a" id="r_a79a8c917454f4c1f137a3087bd5a1c3a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a79a8c917454f4c1f137a3087bd5a1c3a">loadFromFile</a> (const QString &amp;filename)</td></tr>
+<tr class="memdesc:a79a8c917454f4c1f137a3087bd5a1c3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Загрузка данных из файла  <br /></td></tr>
+<tr class="memitem:acb5d213b28fd4d099b87fd3057bca3a7" id="r_acb5d213b28fd4d099b87fd3057bca3a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb5d213b28fd4d099b87fd3057bca3a7">saveToFile</a> (const QString &amp;filename)</td></tr>
+<tr class="memdesc:acb5d213b28fd4d099b87fd3057bca3a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сохранение данных в файл  <br /></td></tr>
+<tr class="memitem:aa36fb5ae925d92082976aa6ae0d1c252" id="r_aa36fb5ae925d92082976aa6ae0d1c252"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa36fb5ae925d92082976aa6ae0d1c252">addEquipment</a> (const <a class="el" href="class_equipment.html">Equipment</a> &amp;equipment)</td></tr>
+<tr class="memdesc:aa36fb5ae925d92082976aa6ae0d1c252"><td class="mdescLeft">&#160;</td><td class="mdescRight">Добавление нового оборудования  <br /></td></tr>
+<tr class="memitem:a16eb9bdfca9093f956b7436ba0092514" id="r_a16eb9bdfca9093f956b7436ba0092514"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16eb9bdfca9093f956b7436ba0092514">updateEquipment</a> (int id, const <a class="el" href="class_equipment.html">Equipment</a> &amp;equipment)</td></tr>
+<tr class="memdesc:a16eb9bdfca9093f956b7436ba0092514"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обновление существующего оборудования  <br /></td></tr>
+<tr class="memitem:a8f6a63c9370185f35d8ab4eab0f61b7e" id="r_a8f6a63c9370185f35d8ab4eab0f61b7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f6a63c9370185f35d8ab4eab0f61b7e">removeEquipment</a> (int id)</td></tr>
+<tr class="memdesc:a8f6a63c9370185f35d8ab4eab0f61b7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Удаление оборудования  <br /></td></tr>
+<tr class="memitem:a9f91d1cc005af620e470ecb5e03f20bd" id="r_a9f91d1cc005af620e470ecb5e03f20bd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_equipment.html">Equipment</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f91d1cc005af620e470ecb5e03f20bd">getEquipment</a> (int id) const</td></tr>
+<tr class="memdesc:a9f91d1cc005af620e470ecb5e03f20bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получение оборудования по ID.  <br /></td></tr>
+<tr class="memitem:a2c114a98abaf86606a4cdabcad747455" id="r_a2c114a98abaf86606a4cdabcad747455"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_equipment.html">Equipment</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c114a98abaf86606a4cdabcad747455">getEquipmentAt</a> (int index) const</td></tr>
+<tr class="memdesc:a2c114a98abaf86606a4cdabcad747455"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получение оборудования по индексу  <br /></td></tr>
+<tr class="memitem:ae649f17d68e321cfaeb0af9c0d496dc8" id="r_ae649f17d68e321cfaeb0af9c0d496dc8"><td class="memItemLeft" align="right" valign="top">QVector&lt; <a class="el" href="class_equipment.html">Equipment</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae649f17d68e321cfaeb0af9c0d496dc8">getAllEquipment</a> () const</td></tr>
+<tr class="memdesc:ae649f17d68e321cfaeb0af9c0d496dc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получение всего списка оборудования  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-static-attribs" class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Статические открытые данные</h2></td></tr>
+<tr class="memitem:aa7fb6134b09d2a67b0fe465b32606fac" id="r_aa7fb6134b09d2a67b0fe465b32606fac"><td class="memItemLeft" align="right" valign="top">static const QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7fb6134b09d2a67b0fe465b32606fac">DB_HEADER</a> = &quot;CONSTRUCTION_DB_HEADER&quot;</td></tr>
+<tr class="memdesc:aa7fb6134b09d2a67b0fe465b32606fac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Заголовок файла для проверки целостности  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Закрытые данные</h2></td></tr>
+<tr class="memitem:ad612e03a834f3853d0db56757978c001" id="r_ad612e03a834f3853d0db56757978c001"><td class="memItemLeft" align="right" valign="top">QVector&lt; <a class="el" href="class_equipment.html">Equipment</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad612e03a834f3853d0db56757978c001">m_equipment</a></td></tr>
+<tr class="memdesc:ad612e03a834f3853d0db56757978c001"><td class="mdescLeft">&#160;</td><td class="mdescRight">Контейнер для хранения данных (п.14 ТЗ)  <br /></td></tr>
+<tr class="memitem:a85648b6a3f03fd5ec147ac4d03dad7f6" id="r_a85648b6a3f03fd5ec147ac4d03dad7f6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85648b6a3f03fd5ec147ac4d03dad7f6">m_nextId</a> = 1</td></tr>
+<tr class="memdesc:a85648b6a3f03fd5ec147ac4d03dad7f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Счетчик для генерации уникальных ID.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Модель данных для управления строительной техникой </p>
+<p>Реализует паттерн MVC для работы с данными (п.15 ТЗ) Поддерживает все основные операции CRUD:</p><ul>
+<li>Create (добавление записей) - п.2.IV ТЗ</li>
+<li>Read (чтение файлов) - п.2.I, п.2.III ТЗ</li>
+<li>Update (редактирование записей) - п.2.V ТЗ</li>
+<li>Delete (удаление записей) - п.2.VI ТЗ</li>
+</ul>
+<p>Дополнительные возможности:</p><ul>
+<li>п.18: Сортировка по столбцам</li>
+<li>п.23: Drag-and-drop операции</li>
+<li>п.4: Защита от поврежденных файлов </li>
+</ul>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Конструктор(ы)</h2>
+<a id="a7813ad00c37274839cc250b76b04678c" name="a7813ad00c37274839cc250b76b04678c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7813ad00c37274839cc250b76b04678c">&#9670;&#160;</a></span>EquipmentModel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">EquipmentModel::EquipmentModel </td>
+          <td>(</td>
+          <td class="paramtype">QObject *</td>          <td class="paramname"><span class="paramname"><em>parent</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel explicit">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Методы</h2>
+<a id="aa36fb5ae925d92082976aa6ae0d1c252" name="aa36fb5ae925d92082976aa6ae0d1c252"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa36fb5ae925d92082976aa6ae0d1c252">&#9670;&#160;</a></span>addEquipment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EquipmentModel::addEquipment </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_equipment.html">Equipment</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>equipment</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Добавление нового оборудования </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">equipment</td><td>Объект оборудования для добавления</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Выполнение п.2.IV ТЗ: Добавление отдельной записи </p>
+
+</div>
+</div>
+<a id="aa0a730be483c81a1b77fa3ede64a2b12" name="aa0a730be483c81a1b77fa3ede64a2b12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0a730be483c81a1b77fa3ede64a2b12">&#9670;&#160;</a></span>columnCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EquipmentModel::columnCount </td>
+          <td>(</td>
+          <td class="paramtype">const QModelIndex &amp;</td>          <td class="paramname"><span class="paramname"><em>parent</em></span><span class="paramdefsep"> = </span><span class="paramdefval">QModelIndex()</span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaa388005cc50fac14628b517948d386c" name="aaa388005cc50fac14628b517948d386c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa388005cc50fac14628b517948d386c">&#9670;&#160;</a></span>data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QVariant EquipmentModel::data </td>
+          <td>(</td>
+          <td class="paramtype">const QModelIndex &amp;</td>          <td class="paramname"><span class="paramname"><em>index</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>role</em></span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa49dc7cacf4fd3cb39c814b0a8185976" name="aa49dc7cacf4fd3cb39c814b0a8185976"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa49dc7cacf4fd3cb39c814b0a8185976">&#9670;&#160;</a></span>dropMimeData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EquipmentModel::dropMimeData </td>
+          <td>(</td>
+          <td class="paramtype">const QMimeData *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Qt::DropAction</td>          <td class="paramname"><span class="paramname"><em>action</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>row</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>column</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QModelIndex &amp;</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6fbf8e66e98331cc97f68441ae1aedc6" name="a6fbf8e66e98331cc97f68441ae1aedc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fbf8e66e98331cc97f68441ae1aedc6">&#9670;&#160;</a></span>flags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Qt::ItemFlags EquipmentModel::flags </td>
+          <td>(</td>
+          <td class="paramtype">const QModelIndex &amp;</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae649f17d68e321cfaeb0af9c0d496dc8" name="ae649f17d68e321cfaeb0af9c0d496dc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae649f17d68e321cfaeb0af9c0d496dc8">&#9670;&#160;</a></span>getAllEquipment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QVector&lt; <a class="el" href="class_equipment.html">Equipment</a> &gt; EquipmentModel::getAllEquipment </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Получение всего списка оборудования </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Вектор всех объектов <a class="el" href="class_equipment.html" title="Класс единицы строительной техники">Equipment</a></dd></dl>
+<p>Выполнение п.2.III ТЗ: Вывод содержимого файла </p>
+
+</div>
+</div>
+<a id="a9f91d1cc005af620e470ecb5e03f20bd" name="a9f91d1cc005af620e470ecb5e03f20bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f91d1cc005af620e470ecb5e03f20bd">&#9670;&#160;</a></span>getEquipment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_equipment.html">Equipment</a> EquipmentModel::getEquipment </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Получение оборудования по ID. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Идентификатор оборудования </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Объект <a class="el" href="class_equipment.html" title="Класс единицы строительной техники">Equipment</a> </dd></dl>
+
+</div>
+</div>
+<a id="a2c114a98abaf86606a4cdabcad747455" name="a2c114a98abaf86606a4cdabcad747455"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c114a98abaf86606a4cdabcad747455">&#9670;&#160;</a></span>getEquipmentAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_equipment.html">Equipment</a> EquipmentModel::getEquipmentAt </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Получение оборудования по индексу </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Индекс в списке </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Объект <a class="el" href="class_equipment.html" title="Класс единицы строительной техники">Equipment</a> </dd></dl>
+
+</div>
+</div>
+<a id="a09cf9a30c577446977b2887fd613c132" name="a09cf9a30c577446977b2887fd613c132"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09cf9a30c577446977b2887fd613c132">&#9670;&#160;</a></span>headerData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QVariant EquipmentModel::headerData </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>section</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Qt::Orientation</td>          <td class="paramname"><span class="paramname"><em>orientation</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>role</em></span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a79a8c917454f4c1f137a3087bd5a1c3a" name="a79a8c917454f4c1f137a3087bd5a1c3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79a8c917454f4c1f137a3087bd5a1c3a">&#9670;&#160;</a></span>loadFromFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EquipmentModel::loadFromFile </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;</td>          <td class="paramname"><span class="paramname"><em>filename</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Загрузка данных из файла </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>Имя файла для загрузки</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Выполнение пунктов ТЗ:</p><ul>
+<li>п.2.I: Чтение файла</li>
+<li>п.4: Защита от поврежденных файлов </li>
+</ul>
+
+</div>
+</div>
+<a id="a55a508debc27616a1adf33d27336a54c" name="a55a508debc27616a1adf33d27336a54c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55a508debc27616a1adf33d27336a54c">&#9670;&#160;</a></span>mimeData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QMimeData * EquipmentModel::mimeData </td>
+          <td>(</td>
+          <td class="paramtype">const QModelIndexList &amp;</td>          <td class="paramname"><span class="paramname"><em>indexes</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a582483f00dcc0d3b99f386fcd745bb57" name="a582483f00dcc0d3b99f386fcd745bb57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a582483f00dcc0d3b99f386fcd745bb57">&#9670;&#160;</a></span>mimeTypes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QStringList EquipmentModel::mimeTypes </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8f6a63c9370185f35d8ab4eab0f61b7e" name="a8f6a63c9370185f35d8ab4eab0f61b7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f6a63c9370185f35d8ab4eab0f61b7e">&#9670;&#160;</a></span>removeEquipment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EquipmentModel::removeEquipment </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Удаление оборудования </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Идентификатор оборудования для удаления</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Выполнение п.2.VI ТЗ: Удаление отдельной записи </p>
+
+</div>
+</div>
+<a id="a93edc059270c4ee12f0ef30571f8f22a" name="a93edc059270c4ee12f0ef30571f8f22a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93edc059270c4ee12f0ef30571f8f22a">&#9670;&#160;</a></span>rowCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EquipmentModel::rowCount </td>
+          <td>(</td>
+          <td class="paramtype">const QModelIndex &amp;</td>          <td class="paramname"><span class="paramname"><em>parent</em></span><span class="paramdefsep"> = </span><span class="paramdefval">QModelIndex()</span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acb5d213b28fd4d099b87fd3057bca3a7" name="acb5d213b28fd4d099b87fd3057bca3a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb5d213b28fd4d099b87fd3057bca3a7">&#9670;&#160;</a></span>saveToFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EquipmentModel::saveToFile </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;</td>          <td class="paramname"><span class="paramname"><em>filename</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Сохранение данных в файл </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>Имя файла для сохранения</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Выполнение пунктов ТЗ:</p><ul>
+<li>п.2.II: Запись файла </li>
+</ul>
+
+</div>
+</div>
+<a id="a5d5cebaa987ffcd4dd509ecb9c3aa181" name="a5d5cebaa987ffcd4dd509ecb9c3aa181"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d5cebaa987ffcd4dd509ecb9c3aa181">&#9670;&#160;</a></span>setData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EquipmentModel::setData </td>
+          <td>(</td>
+          <td class="paramtype">const QModelIndex &amp;</td>          <td class="paramname"><span class="paramname"><em>index</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QVariant &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>role</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5fd0f241c9dfd3571058464d0724dcf5" name="a5fd0f241c9dfd3571058464d0724dcf5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fd0f241c9dfd3571058464d0724dcf5">&#9670;&#160;</a></span>supportedDropActions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Qt::DropActions EquipmentModel::supportedDropActions </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a16eb9bdfca9093f956b7436ba0092514" name="a16eb9bdfca9093f956b7436ba0092514"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16eb9bdfca9093f956b7436ba0092514">&#9670;&#160;</a></span>updateEquipment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EquipmentModel::updateEquipment </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_equipment.html">Equipment</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>equipment</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Обновление существующего оборудования </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Идентификатор оборудования </td></tr>
+    <tr><td class="paramname">equipment</td><td>Новые данные оборудования</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Выполнение п.2.V ТЗ: Редактирование отдельной записи </p>
+
+</div>
+</div>
+<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Данные класса</h2>
+<a id="aa7fb6134b09d2a67b0fe465b32606fac" name="aa7fb6134b09d2a67b0fe465b32606fac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7fb6134b09d2a67b0fe465b32606fac">&#9670;&#160;</a></span>DB_HEADER</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const QString EquipmentModel::DB_HEADER = &quot;CONSTRUCTION_DB_HEADER&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Заголовок файла для проверки целостности </p>
+<p>Выполнение п.4 ТЗ: Защита от поврежденных файлов </p>
+
+</div>
+</div>
+<a id="ad612e03a834f3853d0db56757978c001" name="ad612e03a834f3853d0db56757978c001"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad612e03a834f3853d0db56757978c001">&#9670;&#160;</a></span>m_equipment</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QVector&lt;<a class="el" href="class_equipment.html">Equipment</a>&gt; EquipmentModel::m_equipment</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Контейнер для хранения данных (п.14 ТЗ) </p>
+
+</div>
+</div>
+<a id="a85648b6a3f03fd5ec147ac4d03dad7f6" name="a85648b6a3f03fd5ec147ac4d03dad7f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85648b6a3f03fd5ec147ac4d03dad7f6">&#9670;&#160;</a></span>m_nextId</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EquipmentModel::m_nextId = 1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Счетчик для генерации уникальных ID. </p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li><a class="el" href="equipmentmodel_8h_source.html">equipmentmodel.h</a></li>
+<li><a class="el" href="equipmentmodel_8cpp.html">equipmentmodel.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="class_equipment_model.html">EquipmentModel</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

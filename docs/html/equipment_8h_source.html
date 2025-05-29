@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Construction Equipment Manager: Исходный файл equipment.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Construction Equipment Manager<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Программа для учёта парка строительной техники</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('equipment_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">equipment.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="equipment_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifndef EQUIPMENT_H</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define EQUIPMENT_H</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;QObject&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;QString&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;QDate&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span></div>
+<div class="foldopen" id="foldopen00038" data-start="{" data-end="};">
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="class_equipment.html">   38</a></span><span class="keyword">class </span><a class="code hl_function" href="class_equipment.html#afc0e743122e797c190247ab476de5315">Equipment</a></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>{</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_function" href="class_equipment.html#afc0e743122e797c190247ab476de5315">Equipment</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span> = 0,</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>              <span class="keyword">const</span> QString&amp; <a class="code hl_function" href="class_equipment.html#a67f7430db4ae18a4401fe2ab262442f7">model</a> = <span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>              <span class="keyword">const</span> QString&amp; <a class="code hl_function" href="class_equipment.html#ad2573d83fed473d12cf4f89b7b8110c9">type</a> = <span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>              <span class="keywordtype">int</span> <a class="code hl_function" href="class_equipment.html#a1573264e03944d5e1be5f756500f9f6d">year</a> = 2000,</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>              <span class="keyword">const</span> QString&amp; <a class="code hl_function" href="class_equipment.html#ac093ca49f877aea0560744dfc9656206">regNumber</a> = <span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>              <span class="keywordtype">double</span> <a class="code hl_function" href="class_equipment.html#a2e4c473b87456489558bceb7d6894955">operatingHours</a> = 0.0,</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>              <span class="keyword">const</span> QString&amp; <a class="code hl_function" href="class_equipment.html#a897e8f6288f9791f79cbb364ec7f11ed">condition</a> = <span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>              <span class="keyword">const</span> QDate&amp; <a class="code hl_function" href="class_equipment.html#ab8fa482982c71003b2f1518a2820cc54">lastMaintenance</a> = QDate::currentDate());</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="comment">// Геттеры (п.3 ТЗ - доступ к 8 параметрам)</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_equipment.html#a91cd90fb2d1dc97f01ec7835bfac2d7c">id</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    QString <a class="code hl_function" href="class_equipment.html#a67f7430db4ae18a4401fe2ab262442f7">model</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    QString <a class="code hl_function" href="class_equipment.html#ad2573d83fed473d12cf4f89b7b8110c9">type</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_equipment.html#a1573264e03944d5e1be5f756500f9f6d">year</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    QString <a class="code hl_function" href="class_equipment.html#ac093ca49f877aea0560744dfc9656206">regNumber</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordtype">double</span> <a class="code hl_function" href="class_equipment.html#a2e4c473b87456489558bceb7d6894955">operatingHours</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    QString <a class="code hl_function" href="class_equipment.html#a897e8f6288f9791f79cbb364ec7f11ed">condition</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    QDate <a class="code hl_function" href="class_equipment.html#ab8fa482982c71003b2f1518a2820cc54">lastMaintenance</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="comment">// Сеттеры (п.4, п.5 ТЗ - редактирование записей)</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_equipment.html#a69faa15450918c8de037ca02c3ef30c8">setId</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_equipment.html#a7fbca8e8359d5fe2eab00247e1494dfa">setModel</a>(<span class="keyword">const</span> QString&amp; <a class="code hl_function" href="class_equipment.html#a67f7430db4ae18a4401fe2ab262442f7">model</a>);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_equipment.html#a6eb39ac9fac281ca9869395e38ce2953">setType</a>(<span class="keyword">const</span> QString&amp; <a class="code hl_function" href="class_equipment.html#ad2573d83fed473d12cf4f89b7b8110c9">type</a>);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_equipment.html#a618520e25c72286f39f4bb0ec78c0b8a">setYear</a>(<span class="keywordtype">int</span> <a class="code hl_function" href="class_equipment.html#a1573264e03944d5e1be5f756500f9f6d">year</a>);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_equipment.html#aee4e3444991f0735333fb9e1925c2e35">setRegNumber</a>(<span class="keyword">const</span> QString&amp; <a class="code hl_function" href="class_equipment.html#ac093ca49f877aea0560744dfc9656206">regNumber</a>);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_equipment.html#ab62158a10f1d5e508071f9207a21cde6">setOperatingHours</a>(<span class="keywordtype">double</span> hours);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_equipment.html#af38563128266550c1e2f3f6cb68bb94e">setCondition</a>(<span class="keyword">const</span> QString&amp; <a class="code hl_function" href="class_equipment.html#a897e8f6288f9791f79cbb364ec7f11ed">condition</a>);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_equipment.html#ae1ca413795500afa2a80a589d743516a">setLastMaintenance</a>(<span class="keyword">const</span> QDate&amp; date);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    QString <a class="code hl_function" href="class_equipment.html#a915fb519d8740c3ff9a1b79b90524aa1">toCsv</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keyword">static</span> <a class="code hl_function" href="class_equipment.html#afc0e743122e797c190247ab476de5315">Equipment</a> <a class="code hl_function" href="class_equipment.html#ad53f72b4e136f35e30def286631a5f33">fromCsv</a>(<span class="keyword">const</span> QString&amp; line);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="class_equipment.html#ad31900f311439087bebf33a40d9bb28b">  103</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="class_equipment.html#ad31900f311439087bebf33a40d9bb28b">m_id</a>;                    </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="class_equipment.html#a1d4f2bae6c06fa573f990d125cc59182">  104</a></span>    QString <a class="code hl_variable" href="class_equipment.html#a1d4f2bae6c06fa573f990d125cc59182">m_model</a>;             </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="class_equipment.html#a798ee96944e0d676479a6e95fcf031ab">  105</a></span>    QString <a class="code hl_variable" href="class_equipment.html#a798ee96944e0d676479a6e95fcf031ab">m_type</a>;              </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="class_equipment.html#a1cde8cb41fd5c4656ad392ad92a6a752">  106</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="class_equipment.html#a1cde8cb41fd5c4656ad392ad92a6a752">m_year</a>;                  </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="class_equipment.html#a0ec3217b257300a37e58b588b3d8e6ce">  107</a></span>    QString <a class="code hl_variable" href="class_equipment.html#a0ec3217b257300a37e58b588b3d8e6ce">m_regNumber</a>;         </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="class_equipment.html#a228c461665d92f4545a2d11b154aea8d">  108</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="class_equipment.html#a228c461665d92f4545a2d11b154aea8d">m_operatingHours</a>;     </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="class_equipment.html#aff803f1f496bbf99fd073e5c55c4b2d4">  109</a></span>    QString <a class="code hl_variable" href="class_equipment.html#aff803f1f496bbf99fd073e5c55c4b2d4">m_condition</a>;         </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="class_equipment.html#ac89657af478ce1df8beaa3cfbf0c0ce0">  110</a></span>    QDate <a class="code hl_variable" href="class_equipment.html#ac89657af478ce1df8beaa3cfbf0c0ce0">m_lastMaintenance</a>;     </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>};</div>
+</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="preprocessor">#endif </span><span class="comment">// EQUIPMENT_H</span></div>
+<div class="ttc" id="aclass_equipment_html_a0ec3217b257300a37e58b588b3d8e6ce"><div class="ttname"><a href="class_equipment.html#a0ec3217b257300a37e58b588b3d8e6ce">Equipment::m_regNumber</a></div><div class="ttdeci">QString m_regNumber</div><div class="ttdoc">Регистрационный номер (п.3 ТЗ)</div><div class="ttdef"><b>Определения</b> equipment.h:107</div></div>
+<div class="ttc" id="aclass_equipment_html_a1573264e03944d5e1be5f756500f9f6d"><div class="ttname"><a href="class_equipment.html#a1573264e03944d5e1be5f756500f9f6d">Equipment::year</a></div><div class="ttdeci">int year() const</div><div class="ttdef"><b>Определения</b> equipment.cpp:15</div></div>
+<div class="ttc" id="aclass_equipment_html_a1cde8cb41fd5c4656ad392ad92a6a752"><div class="ttname"><a href="class_equipment.html#a1cde8cb41fd5c4656ad392ad92a6a752">Equipment::m_year</a></div><div class="ttdeci">int m_year</div><div class="ttdoc">Год выпуска (п.3 ТЗ)</div><div class="ttdef"><b>Определения</b> equipment.h:106</div></div>
+<div class="ttc" id="aclass_equipment_html_a1d4f2bae6c06fa573f990d125cc59182"><div class="ttname"><a href="class_equipment.html#a1d4f2bae6c06fa573f990d125cc59182">Equipment::m_model</a></div><div class="ttdeci">QString m_model</div><div class="ttdoc">Модель техники (п.3 ТЗ)</div><div class="ttdef"><b>Определения</b> equipment.h:104</div></div>
+<div class="ttc" id="aclass_equipment_html_a228c461665d92f4545a2d11b154aea8d"><div class="ttname"><a href="class_equipment.html#a228c461665d92f4545a2d11b154aea8d">Equipment::m_operatingHours</a></div><div class="ttdeci">double m_operatingHours</div><div class="ttdoc">Наработка в часах (п.3 ТЗ)</div><div class="ttdef"><b>Определения</b> equipment.h:108</div></div>
+<div class="ttc" id="aclass_equipment_html_a2e4c473b87456489558bceb7d6894955"><div class="ttname"><a href="class_equipment.html#a2e4c473b87456489558bceb7d6894955">Equipment::operatingHours</a></div><div class="ttdeci">double operatingHours() const</div><div class="ttdef"><b>Определения</b> equipment.cpp:17</div></div>
+<div class="ttc" id="aclass_equipment_html_a618520e25c72286f39f4bb0ec78c0b8a"><div class="ttname"><a href="class_equipment.html#a618520e25c72286f39f4bb0ec78c0b8a">Equipment::setYear</a></div><div class="ttdeci">void setYear(int year)</div><div class="ttdef"><b>Определения</b> equipment.cpp:25</div></div>
+<div class="ttc" id="aclass_equipment_html_a67f7430db4ae18a4401fe2ab262442f7"><div class="ttname"><a href="class_equipment.html#a67f7430db4ae18a4401fe2ab262442f7">Equipment::model</a></div><div class="ttdeci">QString model() const</div><div class="ttdef"><b>Определения</b> equipment.cpp:13</div></div>
+<div class="ttc" id="aclass_equipment_html_a69faa15450918c8de037ca02c3ef30c8"><div class="ttname"><a href="class_equipment.html#a69faa15450918c8de037ca02c3ef30c8">Equipment::setId</a></div><div class="ttdeci">void setId(int id)</div><div class="ttdef"><b>Определения</b> equipment.cpp:22</div></div>
+<div class="ttc" id="aclass_equipment_html_a6eb39ac9fac281ca9869395e38ce2953"><div class="ttname"><a href="class_equipment.html#a6eb39ac9fac281ca9869395e38ce2953">Equipment::setType</a></div><div class="ttdeci">void setType(const QString &amp;type)</div><div class="ttdef"><b>Определения</b> equipment.cpp:24</div></div>
+<div class="ttc" id="aclass_equipment_html_a798ee96944e0d676479a6e95fcf031ab"><div class="ttname"><a href="class_equipment.html#a798ee96944e0d676479a6e95fcf031ab">Equipment::m_type</a></div><div class="ttdeci">QString m_type</div><div class="ttdoc">Тип техники (п.3 ТЗ)</div><div class="ttdef"><b>Определения</b> equipment.h:105</div></div>
+<div class="ttc" id="aclass_equipment_html_a7fbca8e8359d5fe2eab00247e1494dfa"><div class="ttname"><a href="class_equipment.html#a7fbca8e8359d5fe2eab00247e1494dfa">Equipment::setModel</a></div><div class="ttdeci">void setModel(const QString &amp;model)</div><div class="ttdef"><b>Определения</b> equipment.cpp:23</div></div>
+<div class="ttc" id="aclass_equipment_html_a897e8f6288f9791f79cbb364ec7f11ed"><div class="ttname"><a href="class_equipment.html#a897e8f6288f9791f79cbb364ec7f11ed">Equipment::condition</a></div><div class="ttdeci">QString condition() const</div><div class="ttdef"><b>Определения</b> equipment.cpp:18</div></div>
+<div class="ttc" id="aclass_equipment_html_a915fb519d8740c3ff9a1b79b90524aa1"><div class="ttname"><a href="class_equipment.html#a915fb519d8740c3ff9a1b79b90524aa1">Equipment::toCsv</a></div><div class="ttdeci">QString toCsv() const</div><div class="ttdoc">Сериализация в CSV формат</div><div class="ttdef"><b>Определения</b> equipment.cpp:31</div></div>
+<div class="ttc" id="aclass_equipment_html_a91cd90fb2d1dc97f01ec7835bfac2d7c"><div class="ttname"><a href="class_equipment.html#a91cd90fb2d1dc97f01ec7835bfac2d7c">Equipment::id</a></div><div class="ttdeci">int id() const</div><div class="ttdef"><b>Определения</b> equipment.cpp:12</div></div>
+<div class="ttc" id="aclass_equipment_html_ab62158a10f1d5e508071f9207a21cde6"><div class="ttname"><a href="class_equipment.html#ab62158a10f1d5e508071f9207a21cde6">Equipment::setOperatingHours</a></div><div class="ttdeci">void setOperatingHours(double hours)</div><div class="ttdef"><b>Определения</b> equipment.cpp:27</div></div>
+<div class="ttc" id="aclass_equipment_html_ab8fa482982c71003b2f1518a2820cc54"><div class="ttname"><a href="class_equipment.html#ab8fa482982c71003b2f1518a2820cc54">Equipment::lastMaintenance</a></div><div class="ttdeci">QDate lastMaintenance() const</div><div class="ttdef"><b>Определения</b> equipment.cpp:19</div></div>
+<div class="ttc" id="aclass_equipment_html_ac093ca49f877aea0560744dfc9656206"><div class="ttname"><a href="class_equipment.html#ac093ca49f877aea0560744dfc9656206">Equipment::regNumber</a></div><div class="ttdeci">QString regNumber() const</div><div class="ttdef"><b>Определения</b> equipment.cpp:16</div></div>
+<div class="ttc" id="aclass_equipment_html_ac89657af478ce1df8beaa3cfbf0c0ce0"><div class="ttname"><a href="class_equipment.html#ac89657af478ce1df8beaa3cfbf0c0ce0">Equipment::m_lastMaintenance</a></div><div class="ttdeci">QDate m_lastMaintenance</div><div class="ttdoc">Дата последнего ТО (п.3 ТЗ)</div><div class="ttdef"><b>Определения</b> equipment.h:110</div></div>
+<div class="ttc" id="aclass_equipment_html_ad2573d83fed473d12cf4f89b7b8110c9"><div class="ttname"><a href="class_equipment.html#ad2573d83fed473d12cf4f89b7b8110c9">Equipment::type</a></div><div class="ttdeci">QString type() const</div><div class="ttdef"><b>Определения</b> equipment.cpp:14</div></div>
+<div class="ttc" id="aclass_equipment_html_ad31900f311439087bebf33a40d9bb28b"><div class="ttname"><a href="class_equipment.html#ad31900f311439087bebf33a40d9bb28b">Equipment::m_id</a></div><div class="ttdeci">int m_id</div><div class="ttdoc">Уникальный идентификатор (п.3 ТЗ)</div><div class="ttdef"><b>Определения</b> equipment.h:103</div></div>
+<div class="ttc" id="aclass_equipment_html_ad53f72b4e136f35e30def286631a5f33"><div class="ttname"><a href="class_equipment.html#ad53f72b4e136f35e30def286631a5f33">Equipment::fromCsv</a></div><div class="ttdeci">static Equipment fromCsv(const QString &amp;line)</div><div class="ttdoc">Десериализация из CSV формата</div><div class="ttdef"><b>Определения</b> equipment.cpp:53</div></div>
+<div class="ttc" id="aclass_equipment_html_ae1ca413795500afa2a80a589d743516a"><div class="ttname"><a href="class_equipment.html#ae1ca413795500afa2a80a589d743516a">Equipment::setLastMaintenance</a></div><div class="ttdeci">void setLastMaintenance(const QDate &amp;date)</div><div class="ttdef"><b>Определения</b> equipment.cpp:29</div></div>
+<div class="ttc" id="aclass_equipment_html_aee4e3444991f0735333fb9e1925c2e35"><div class="ttname"><a href="class_equipment.html#aee4e3444991f0735333fb9e1925c2e35">Equipment::setRegNumber</a></div><div class="ttdeci">void setRegNumber(const QString &amp;regNumber)</div><div class="ttdef"><b>Определения</b> equipment.cpp:26</div></div>
+<div class="ttc" id="aclass_equipment_html_af38563128266550c1e2f3f6cb68bb94e"><div class="ttname"><a href="class_equipment.html#af38563128266550c1e2f3f6cb68bb94e">Equipment::setCondition</a></div><div class="ttdeci">void setCondition(const QString &amp;condition)</div><div class="ttdef"><b>Определения</b> equipment.cpp:28</div></div>
+<div class="ttc" id="aclass_equipment_html_afc0e743122e797c190247ab476de5315"><div class="ttname"><a href="class_equipment.html#afc0e743122e797c190247ab476de5315">Equipment::Equipment</a></div><div class="ttdeci">Equipment(int id=0, const QString &amp;model=&quot;&quot;, const QString &amp;type=&quot;&quot;, int year=2000, const QString &amp;regNumber=&quot;&quot;, double operatingHours=0.0, const QString &amp;condition=&quot;&quot;, const QDate &amp;lastMaintenance=QDate::currentDate())</div><div class="ttdoc">Конструктор класса Equipment.</div><div class="ttdef"><b>Определения</b> equipment.cpp:4</div></div>
+<div class="ttc" id="aclass_equipment_html_aff803f1f496bbf99fd073e5c55c4b2d4"><div class="ttname"><a href="class_equipment.html#aff803f1f496bbf99fd073e5c55c4b2d4">Equipment::m_condition</a></div><div class="ttdeci">QString m_condition</div><div class="ttdoc">Техническое состояние (п.3 ТЗ)</div><div class="ttdef"><b>Определения</b> equipment.h:109</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="equipment_8h.html">equipment.h</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+PROJECT_NAME           = "Construction Equipment Manager"
+PROJECT_NUMBER         = "1.0"
+PROJECT_BRIEF          = "Программа для учёта парка строительной техники"
+
+OUTPUT_DIRECTORY       = docs
+CREATE_SUBDIRS         = NO
+
+INPUT                  = . 
+FILE_PATTERNS          = *.cpp *.h *.hpp *.md
+RECURSIVE              = YES
+EXCLUDE                = build
+
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+HTML_FILE_EXTENSION    = .html
+
+GENERATE_LATEX         = NO
+
+HAVE_DOT               = NO
+
+QUIET                  = NO
+WARNINGS               = YES
+WARN_IF_UNDOCUMENTED   = YES
+WARN_IF_DOC_ERROR      = YES
+
+INPUT_ENCODING         = UTF-8
+OUTPUT_LANGUAGE        = Russian 
