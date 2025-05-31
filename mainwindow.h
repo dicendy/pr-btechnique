@@ -23,12 +23,40 @@
 #include <QSortFilterProxyModel>
 #include <QDragEnterEvent>
 #include <QDropEvent>
+#include <QStyledItemDelegate>
+#include <QComboBox>
+#include <QSpinBox>
+#include <QLineEdit>
+#include <QDateEdit>
 #include "equipmentmodel.h"
 #include "settings.h"
+#include "equipmentdelegate.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
+
+/**
+ * @class MultiSelectFilterProxyModel
+ * @brief Кастомный прокси-фильтр для поддержки множественного выбора значений
+ */
+class MultiSelectFilterProxyModel : public QSortFilterProxyModel
+{
+    Q_OBJECT
+
+public:
+    explicit MultiSelectFilterProxyModel(QObject *parent = nullptr);
+    
+    void setColumnFilters(int column, const QStringList &filters);
+    void clearColumnFilters(int column);
+    QStringList getColumnFilters(int column) const;
+    
+protected:
+    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const override;
+
+private:
+    QMap<int, QStringList> m_columnFilters;
+};
 
 /**
  * @class MainWindow
@@ -61,6 +89,7 @@ protected:
 
 private slots:
     // Файловые операции (п.2 ТЗ)
+    void on_actionNew_triggered();     ///< Создание нового файла
     void on_actionOpen_triggered();    ///< Открытие файла (п.2.I ТЗ)
     void on_actionSave_triggered();    ///< Сохранение файла (п.2.II ТЗ)
     void on_actionSaveAs_triggered();  ///< Сохранение файла как... (п.2.II ТЗ)
@@ -85,14 +114,24 @@ private slots:
     // Графики (п.25 ТЗ)
     void on_actionShowChart_triggered(); ///< Отображение графиков (п.25 ТЗ)
 
+    // Новые слоты для дополнительной функциональности
+    void onTableSelectionChanged();     ///< Обработка изменения выделения в таблице
+    void showColumnFilterMenu(const QPoint& pos); ///< Показ меню фильтрации столбца
+    void onHeaderClicked(int logicalIndex); ///< Обработка нажатия на заголовок столбца
+
+public slots:
+    /// Открытие нового окна с документом
+    void openNewWindow(const QString &filename = QString());
+
 private:
     Ui::MainWindow *ui;                      ///< Интерфейс пользователя
     static QTranslator *s_translator;        ///< Глобальный переводчик для динамического переключения (п.16 ТЗ)
     EquipmentModel *m_model;                 ///< Модель данных (п.15 ТЗ)
-    QSortFilterProxyModel *m_proxyModel;     ///< Прокси-модель для фильтрации и сортировки (п.17,18,22 ТЗ)
+    MultiSelectFilterProxyModel *m_proxyModel; ///< Прокси-модель для фильтрации и сортировки (п.17,18,22 ТЗ)
     QString m_currentFile;                   ///< Текущий открытый файл
     Settings *m_settings;                    ///< Диалог настроек
     QMenu *m_languageMenu;
+    QMap<int, QStringList> m_columnFilters;  ///< Активные фильтры по столбцам
 
     bool isModelValid() const;
 
@@ -109,5 +148,15 @@ private:
 
     // Drag-and-drop (п.23 ТЗ)
     void setupDragAndDrop();     ///< Настройка drag-and-drop (п.23 ТЗ)
+    
+    // Валидация данных
+    bool validateCellData(int column, const QVariant &value, const QModelIndex &index) const;
+    void setupColumnFilters();   ///< Настройка фильтров для столбцов
+    void showFilterDialog(int column, const QPoint &pos); ///< Показ диалога фильтрации для столбца
+    
+    // Управление окнами
+    static QList<MainWindow*> s_openWindows; ///< Список открытых окон
+    void registerWindow();      ///< Регистрация окна в списке
+    void unregisterWindow();    ///< Удаление окна из списка
 };
 #endif // MAINWINDOW_H

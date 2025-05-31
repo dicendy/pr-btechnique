@@ -39,7 +39,7 @@ void ChartDialog::updateChart(int type)
 {
     QChart *chart = new QChart();
 
-    if (type == 0) { // Equipment by Year
+    if (type == 0) {
         QMap<int, int> yearCount;
         for (const Equipment& eq : m_equipment) {
             yearCount[eq.year()]++;
@@ -68,7 +68,7 @@ void ChartDialog::updateChart(int type)
 
         chart->setTitle(tr("Equipment Count by Year"));
     }
-    else if (type == 1) { // Operating Hours
+    else if (type == 1) {
         QBarSeries *series = new QBarSeries();
         QBarSet *set = new QBarSet(tr("Operating Hours"));
 
@@ -92,7 +92,7 @@ void ChartDialog::updateChart(int type)
 
         chart->setTitle(tr("Operating Hours by Equipment"));
     }
-    else { // Condition Statistics
+    else {
         QMap<QString, int> conditionCount;
         for (const Equipment& eq : m_equipment) {
             conditionCount[eq.condition()]++;

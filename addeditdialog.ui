@@ -57,7 +57,7 @@
        </item>
        <item>
         <property name="text">
-         <string>Truck</string>
+         <string>Grader</string>
         </property>
        </item>
        <item>
@@ -118,7 +118,7 @@
        </item>
        <item>
         <property name="text">
-         <string>Fair</string>
+         <string>Satisfactory</string>
         </property>
        </item>
        <item>
@@ -128,7 +128,7 @@
        </item>
        <item>
         <property name="text">
-         <string>Needs Repair</string>
+         <string>Critical</string>
         </property>
        </item>
       </widget>

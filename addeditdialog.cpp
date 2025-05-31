@@ -43,9 +43,10 @@ void AddEditDialog::setEquipment(const Equipment &equipment)
 
 void AddEditDialog::setupValidators()
 {
-    // Рег. номер: 2 буквы, 3 цифры, 2 буквы
-    QRegularExpression regExp("[А-ЯA-Z]{2}\\d{3}[А-ЯA-Z]{2}");
+    // Рег. номер: 1 буква, 3 цифры, 2 буквы (А111ВВ)
+    QRegularExpression regExp("^[А-ЯA-Z]{1}\\d{3}[А-ЯA-Z]{2}$");
     ui->regNumberEdit->setValidator(new QRegularExpressionValidator(regExp, this));
+    ui->regNumberEdit->setPlaceholderText("А111ВВ");
 
     // Только цифры для года
     ui->yearSpinBox->setRange(1950, QDate::currentDate().year());

@@ -122,6 +122,21 @@ public:
     QVector<Equipment> getAllEquipment() const;
 
     /**
+     * @brief Создание новой пустой модели
+     * 
+     * Выполнение п.1 нового ТЗ: Создание пустой таблицы
+     */
+    void createNew();
+
+    /**
+     * @brief Валидация данных для определенного столбца
+     * @param column Номер столбца
+     * @param value Значение для проверки
+     * @return true если данные валидны
+     */
+    bool validateData(int column, const QVariant &value) const;
+
+    /**
      * @brief Заголовок файла для проверки целостности
      * 
      * Выполнение п.4 ТЗ: Защита от поврежденных файлов
@@ -131,6 +146,27 @@ public:
 private:
     QVector<Equipment> m_equipment;  ///< Контейнер для хранения данных (п.14 ТЗ)
     int m_nextId = 1;               ///< Счетчик для генерации уникальных ID
+    
+    /**
+     * @brief Валидация регистрационного номера
+     * @param regNumber Регистрационный номер для проверки
+     * @return true если номер соответствует шаблону НН111ННН
+     */
+    bool validateRegNumber(const QString &regNumber) const;
+    
+    /**
+     * @brief Валидация года
+     * @param year Год для проверки
+     * @return true если год из 4 цифр
+     */
+    bool validateYear(int year) const;
+    
+    /**
+     * @brief Валидация даты технического обслуживания
+     * @param dateStr Строка даты в формате dd.MM.yyyy
+     * @return true если дата корректна
+     */
+    bool validateMaintenanceDate(const QString &dateStr) const;
 };
 
 #endif // EQUIPMENTMODEL_H

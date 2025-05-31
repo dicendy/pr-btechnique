@@ -190,6 +190,50 @@ Developed as coursework project.</source>
         <source>Cannot save file</source>
         <translation>Не удается сохранить файл</translation>
     </message>
+    <message>
+        <source>Excavator</source>
+        <translation>Экскаватор</translation>
+    </message>
+    <message>
+        <source>Bulldozer</source>
+        <translation>Бульдозер</translation>
+    </message>
+    <message>
+        <source>Crane</source>
+        <translation>Кран</translation>
+    </message>
+    <message>
+        <source>Loader</source>
+        <translation>Погрузчик</translation>
+    </message>
+    <message>
+        <source>Grader</source>
+        <translation>Грейдер</translation>
+    </message>
+    <message>
+        <source>Other</source>
+        <translation>Прочее</translation>
+    </message>
+    <message>
+        <source>Excellent</source>
+        <translation>Отличное</translation>
+    </message>
+    <message>
+        <source>Good</source>
+        <translation>Хорошее</translation>
+    </message>
+    <message>
+        <source>Satisfactory</source>
+        <translation>Удовлетворительное</translation>
+    </message>
+    <message>
+        <source>Poor</source>
+        <translation>Плохое</translation>
+    </message>
+    <message>
+        <source>Critical</source>
+        <translation>Критическое</translation>
+    </message>
 </context>
 <context>
     <name>MainWindow</name>
@@ -226,8 +270,8 @@ Developed as coursework project.</source>
         <translation>Правка</translation>
     </message>
     <message>
-        <source>View</source>
-        <translation>Вид</translation>
+        <source>Analytics</source>
+        <translation>Аналитика</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -353,6 +397,106 @@ Developed as coursework project.</source>
         <source>Delete equipment %1?</source>
         <translation>Удалить технику %1?</translation>
     </message>
+    <message>
+        <source>New File</source>
+        <translation>Новый файл</translation>
+    </message>
+    <message>
+        <source>New file created</source>
+        <translation>Новый файл создан</translation>
+    </message>
+    <message>
+        <source>Open in new window?</source>
+        <translation>Открыть в новом окне?</translation>
+    </message>
+    <message>
+        <source>Clear Filter</source>
+        <translation>Очистить фильтр</translation>
+    </message>
+    <message>
+        <source>Create in new window?</source>
+        <translation>Создать в новом окне?</translation>
+    </message>
+    <message>
+        <source>Search in column: %1</source>
+        <translation>Поиск в столбце: %1</translation>
+    </message>
+    <message>
+        <source>Search in all columns</source>
+        <translation>Поиск во всех столбцах</translation>
+    </message>
+    <message>
+        <source>Select All</source>
+        <translation>Выбрать всё</translation>
+    </message>
+    <message>
+        <source>Deselect All</source>
+        <translation>Снять выделение</translation>
+    </message>
+    <message>
+        <source>(Empty)</source>
+        <translation>(Пусто)</translation>
+    </message>
+    <message>
+        <source>Total records: %1</source>
+        <translation>Всего записей: %1</translation>
+    </message>
+    <message>
+        <source>Showing %1 of %2 records</source>
+        <translation>Показано %1 из %2 записей</translation>
+    </message>
+    <message>
+        <source>Equipment updated successfully</source>
+        <translation>Оборудование успешно обновлено</translation>
+    </message>
+    <message>
+        <source>Failed to update equipment: %1</source>
+        <translation>Не удалось обновить оборудование: %1</translation>
+    </message>
+    <message>
+        <source>Application is not properly initialized.</source>
+        <translation>Приложение неправильно инициализировано.</translation>
+    </message>
+    <message>
+        <source>Please select a row to delete.</source>
+        <translation>Пожалуйста, выберите строку для удаления.</translation>
+    </message>
+    <message>
+        <source>Invalid selection.</source>
+        <translation>Неверный выбор.</translation>
+    </message>
+    <message>
+        <source>Selected row is out of range.</source>
+        <translation>Выбранная строка вне диапазона.</translation>
+    </message>
+    <message>
+        <source>Failed to get equipment data.</source>
+        <translation>Не удалось получить данные оборудования.</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to delete equipment:\n%1 (%2)?</source>
+        <translation>Вы уверены, что хотите удалить оборудование:\n%1 (%2)?</translation>
+    </message>
+    <message>
+        <source>Equipment deleted successfully</source>
+        <translation>Оборудование успешно удалено</translation>
+    </message>
+    <message>
+        <source>Failed to delete equipment: %1</source>
+        <translation>Не удалось удалить оборудование: %1</translation>
+    </message>
+    <message>
+        <source>Error refreshing view</source>
+        <translation>Ошибка обновления представления</translation>
+    </message>
+    <message>
+        <source>Please select a cell to edit.</source>
+        <translation>Пожалуйста, выберите ячейку для редактирования.</translation>
+    </message>
+    <message>
+        <source>Please select a cell to delete.</source>
+        <translation>Пожалуйста, выберите ячейку для удаления.</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -370,6 +514,68 @@ Developed as coursework project.</source>
     <message>
         <source>Application Settings</source>
         <translation>Настройки приложения</translation>
+    </message>
+</context>
+<context>
+    <name>EquipmentDelegate</name>
+    <message>
+        <source>Excavator</source>
+        <translation>Экскаватор</translation>
+    </message>
+    <message>
+        <source>Bulldozer</source>
+        <translation>Бульдозер</translation>
+    </message>
+    <message>
+        <source>Crane</source>
+        <translation>Кран</translation>
+    </message>
+    <message>
+        <source>Loader</source>
+        <translation>Погрузчик</translation>
+    </message>
+    <message>
+        <source>Grader</source>
+        <translation>Грейдер</translation>
+    </message>
+    <message>
+        <source>Other</source>
+        <translation>Прочее</translation>
+    </message>
+    <message>
+        <source>Excellent</source>
+        <translation>Отличное</translation>
+    </message>
+    <message>
+        <source>Good</source>
+        <translation>Хорошее</translation>
+    </message>
+    <message>
+        <source>Satisfactory</source>
+        <translation>Удовлетворительное</translation>
+    </message>
+    <message>
+        <source>Poor</source>
+        <translation>Плохое</translation>
+    </message>
+    <message>
+        <source>Critical</source>
+        <translation>Критическое</translation>
+    </message>
+</context>
+<context>
+    <name>QMessageBox</name>
+    <message>
+        <source>Yes</source>
+        <translation>Да</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation>Нет</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Отмена</translation>
     </message>
 </context>
 </TS>

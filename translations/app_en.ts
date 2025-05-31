@@ -226,8 +226,8 @@ Developed as coursework project.</translation>
         <translation>Edit</translation>
     </message>
     <message>
-        <source>View</source>
-        <translation>View</translation>
+        <source>Analytics</source>
+        <translation>Analytics</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -353,6 +353,98 @@ Developed as coursework project.</translation>
         <source>Delete equipment %1?</source>
         <translation>Delete equipment %1?</translation>
     </message>
+    <message>
+        <source>New File</source>
+        <translation>New File</translation>
+    </message>
+    <message>
+        <source>New file created</source>
+        <translation>New file created</translation>
+    </message>
+    <message>
+        <source>Open in new window?</source>
+        <translation>Open in new window?</translation>
+    </message>
+    <message>
+        <source>Create in new window?</source>
+        <translation>Create in new window?</translation>
+    </message>
+    <message>
+        <source>Search in column: %1</source>
+        <translation>Search in column: %1</translation>
+    </message>
+    <message>
+        <source>Search in all columns</source>
+        <translation>Search in all columns</translation>
+    </message>
+    <message>
+        <source>Select All</source>
+        <translation>Select All</translation>
+    </message>
+    <message>
+        <source>Deselect All</source>
+        <translation>Deselect All</translation>
+    </message>
+    <message>
+        <source>(Empty)</source>
+        <translation>(Empty)</translation>
+    </message>
+    <message>
+        <source>Clear Filter</source>
+        <translation>Clear Filter</translation>
+    </message>
+    <message>
+        <source>Total records: %1</source>
+        <translation>Total records: %1</translation>
+    </message>
+    <message>
+        <source>Showing %1 of %2 records</source>
+        <translation>Showing %1 of %2 records</translation>
+    </message>
+    <message>
+        <source>Equipment updated successfully</source>
+        <translation>Equipment updated successfully</translation>
+    </message>
+    <message>
+        <source>Failed to update equipment: %1</source>
+        <translation>Failed to update equipment: %1</translation>
+    </message>
+    <message>
+        <source>Application is not properly initialized.</source>
+        <translation>Application is not properly initialized.</translation>
+    </message>
+    <message>
+        <source>Please select a row to delete.</source>
+        <translation>Please select a row to delete.</translation>
+    </message>
+    <message>
+        <source>Invalid selection.</source>
+        <translation>Invalid selection.</translation>
+    </message>
+    <message>
+        <source>Selected row is out of range.</source>
+        <translation>Selected row is out of range.</translation>
+    </message>
+    <message>
+        <source>Failed to get equipment data.</source>
+        <translation>Failed to get equipment data.</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to delete equipment:\n%1 (%2)?</source>
+        <translation>Are you sure you want to delete equipment:\n%1 (%2)?</translation>
+    </message>
+    <message>
+        <source>Equipment deleted successfully</source>
+        <translation>Equipment deleted successfully</translation>
+    </message>
+    <message>
+        <source>Failed to delete equipment: %1</source>
+        <translation>Failed to delete equipment: %1</translation>
+    </message>
+    <message>
+        <source>Error refreshing view</source>
+        <translation>Error refreshing view</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -370,6 +462,68 @@ Developed as coursework project.</translation>
     <message>
         <source>Application Settings</source>
         <translation>Application Settings</translation>
+    </message>
+</context>
+<context>
+    <name>EquipmentDelegate</name>
+    <message>
+        <source>Excavator</source>
+        <translation>Excavator</translation>
+    </message>
+    <message>
+        <source>Bulldozer</source>
+        <translation>Bulldozer</translation>
+    </message>
+    <message>
+        <source>Crane</source>
+        <translation>Crane</translation>
+    </message>
+    <message>
+        <source>Loader</source>
+        <translation>Loader</translation>
+    </message>
+    <message>
+        <source>Grader</source>
+        <translation>Grader</translation>
+    </message>
+    <message>
+        <source>Other</source>
+        <translation>Other</translation>
+    </message>
+    <message>
+        <source>Excellent</source>
+        <translation>Excellent</translation>
+    </message>
+    <message>
+        <source>Good</source>
+        <translation>Good</translation>
+    </message>
+    <message>
+        <source>Satisfactory</source>
+        <translation>Satisfactory</translation>
+    </message>
+    <message>
+        <source>Poor</source>
+        <translation>Poor</translation>
+    </message>
+    <message>
+        <source>Critical</source>
+        <translation>Critical</translation>
+    </message>
+</context>
+<context>
+    <name>QMessageBox</name>
+    <message>
+        <source>Yes</source>
+        <translation>Yes</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation>No</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Cancel</translation>
     </message>
 </context>
 </TS>

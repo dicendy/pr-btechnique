@@ -28,57 +28,6 @@
        <widget class="QLineEdit" name="searchEdit"/>
       </item>
       <item>
-       <widget class="QLabel" name="columnLabel">
-        <property name="text">
-         <string>in column:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QComboBox" name="searchComboBox">
-        <item>
-         <property name="text">
-          <string>ID</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Model</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Type</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Year</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Reg. Number</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Operating Hours</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Condition</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Last Maintenance</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item>
        <spacer name="horizontalSpacer">
         <property name="orientation">
          <enum>Qt::Orientation::Horizontal</enum>
@@ -111,6 +60,7 @@
     <property name="title">
      <string>File</string>
     </property>
+    <addaction name="actionNew"/>
     <addaction name="actionOpen"/>
     <addaction name="actionSave"/>
     <addaction name="actionSaveAs"/>
@@ -131,7 +81,7 @@
    </widget>
    <widget class="QMenu" name="menuView">
     <property name="title">
-     <string>View</string>
+     <string>Analytics</string>
     </property>
     <addaction name="actionShowChart"/>
    </widget>
@@ -153,6 +103,14 @@
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionNew">
+   <property name="text">
+    <string>New File</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
   <action name="actionOpen">
    <property name="text">
     <string>Open</string>
@@ -198,7 +156,7 @@
     <string>Add Equipment</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+N</string>
+    <string>Ctrl+Shift+N</string>
    </property>
   </action>
   <action name="actionEdit">

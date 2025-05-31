@@ -214,8 +214,8 @@ Als Kursarbeitsprojekt entwickelt.</translation>
         <translation>Bearbeiten</translation>
     </message>
     <message>
-        <source>View</source>
-        <translation>Ansicht</translation>
+        <source>Analytics</source>
+        <translation>Analytics</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -309,6 +309,106 @@ Als Kursarbeitsprojekt entwickelt.</translation>
         <source>Delete equipment %1?</source>
         <translation>Ausrüstung %1 löschen?</translation>
     </message>
+    <message>
+        <source>New File</source>
+        <translation>Neue Datei</translation>
+    </message>
+    <message>
+        <source>New file created</source>
+        <translation>Neue Datei erstellt</translation>
+    </message>
+    <message>
+        <source>Open in new window?</source>
+        <translation>In neuem Fenster öffnen?</translation>
+    </message>
+    <message>
+        <source>Create in new window?</source>
+        <translation>In neuem Fenster erstellen?</translation>
+    </message>
+    <message>
+        <source>Search in column: %1</source>
+        <translation>Suche in Spalte: %1</translation>
+    </message>
+    <message>
+        <source>Search in all columns</source>
+        <translation>Suche in allen Spalten</translation>
+    </message>
+    <message>
+        <source>Select All</source>
+        <translation>Alle auswählen</translation>
+    </message>
+    <message>
+        <source>Deselect All</source>
+        <translation>Alle abwählen</translation>
+    </message>
+    <message>
+        <source>(Empty)</source>
+        <translation>(Leer)</translation>
+    </message>
+    <message>
+        <source>Clear Filter</source>
+        <translation>Filter löschen</translation>
+    </message>
+    <message>
+        <source>Total records: %1</source>
+        <translation>Gesamtdatensätze: %1</translation>
+    </message>
+    <message>
+        <source>Showing %1 of %2 records</source>
+        <translation>Zeige %1 von %2 Datensätzen</translation>
+    </message>
+    <message>
+        <source>Equipment updated successfully</source>
+        <translation>Ausrüstung erfolgreich aktualisiert</translation>
+    </message>
+    <message>
+        <source>Failed to update equipment: %1</source>
+        <translation>Fehler beim Aktualisieren der Ausrüstung: %1</translation>
+    </message>
+    <message>
+        <source>Application is not properly initialized.</source>
+        <translation>Anwendung ist nicht ordnungsgemäß initialisiert.</translation>
+    </message>
+    <message>
+        <source>Please select a row to delete.</source>
+        <translation>Bitte wählen Sie eine Zeile zum Löschen aus.</translation>
+    </message>
+    <message>
+        <source>Invalid selection.</source>
+        <translation>Ungültige Auswahl.</translation>
+    </message>
+    <message>
+        <source>Selected row is out of range.</source>
+        <translation>Ausgewählte Zeile ist außerhalb des Bereichs.</translation>
+    </message>
+    <message>
+        <source>Failed to get equipment data.</source>
+        <translation>Fehler beim Abrufen der Ausrüstungsdaten.</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to delete equipment:\n%1 (%2)?</source>
+        <translation>Sind Sie sicher, dass Sie die Ausrüstung löschen möchten:\n%1 (%2)?</translation>
+    </message>
+    <message>
+        <source>Equipment deleted successfully</source>
+        <translation>Ausrüstung erfolgreich gelöscht</translation>
+    </message>
+    <message>
+        <source>Failed to delete equipment: %1</source>
+        <translation>Fehler beim Löschen der Ausrüstung: %1</translation>
+    </message>
+    <message>
+        <source>Error refreshing view</source>
+        <translation>Fehler beim Aktualisieren der Ansicht</translation>
+    </message>
+    <message>
+        <source>Please select a cell to edit.</source>
+        <translation>Bitte wählen Sie eine Zelle zum Bearbeiten aus.</translation>
+    </message>
+    <message>
+        <source>Please select a cell to delete.</source>
+        <translation>Bitte wählen Sie eine Zelle zum Löschen aus.</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -326,6 +426,68 @@ Als Kursarbeitsprojekt entwickelt.</translation>
     <message>
         <source>Application Settings</source>
         <translation>Anwendungseinstellungen</translation>
+    </message>
+</context>
+<context>
+    <name>EquipmentDelegate</name>
+    <message>
+        <source>Excavator</source>
+        <translation>Bagger</translation>
+    </message>
+    <message>
+        <source>Bulldozer</source>
+        <translation>Bulldozer</translation>
+    </message>
+    <message>
+        <source>Crane</source>
+        <translation>Kran</translation>
+    </message>
+    <message>
+        <source>Loader</source>
+        <translation>Lader</translation>
+    </message>
+    <message>
+        <source>Grader</source>
+        <translation>Grader</translation>
+    </message>
+    <message>
+        <source>Other</source>
+        <translation>Andere</translation>
+    </message>
+    <message>
+        <source>Excellent</source>
+        <translation>Ausgezeichnet</translation>
+    </message>
+    <message>
+        <source>Good</source>
+        <translation>Gut</translation>
+    </message>
+    <message>
+        <source>Satisfactory</source>
+        <translation>Befriedigend</translation>
+    </message>
+    <message>
+        <source>Poor</source>
+        <translation>Schlecht</translation>
+    </message>
+    <message>
+        <source>Critical</source>
+        <translation>Kritisch</translation>
+    </message>
+</context>
+<context>
+    <name>QMessageBox</name>
+    <message>
+        <source>Yes</source>
+        <translation>Ja</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation>Nein</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Stornieren</translation>
     </message>
 </context>
 </TS>

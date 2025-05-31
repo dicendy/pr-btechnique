@@ -4,6 +4,7 @@
 #include <QMimeData>
 #include <QUrl>
 #include <QDebug>
+#include <QRegularExpression>
 
 const QString EquipmentModel::DB_HEADER = "CONSTRUCTION_DB_HEADER";
 
@@ -73,6 +74,13 @@ bool EquipmentModel::setData(const QModelIndex &index, const QVariant &value, in
         return false;
     }
 
+    // Проверяем валидность данных перед установкой
+    if (!validateData(index.column(), value)) {
+        // Возвращаем предыдущее значение
+        emit dataChanged(index, index, {role});
+        return false;
+    }
+
     Equipment &item = m_equipment[index.row()];
     bool changed = false;
 
@@ -114,9 +122,12 @@ bool EquipmentModel::setData(const QModelIndex &index, const QVariant &value, in
         }
         break;
     case 7:
-        if (value.toDate() != item.lastMaintenance()) {
-            item.setLastMaintenance(value.toDate());
-            changed = true;
+        {
+            QDate newDate = QDate::fromString(value.toString(), "dd.MM.yyyy");
+            if (newDate != item.lastMaintenance()) {
+                item.setLastMaintenance(newDate);
+                changed = true;
+            }
         }
         break;
     default:
@@ -313,4 +324,72 @@ Equipment EquipmentModel::getEquipmentAt(int index) const
 QVector<Equipment> EquipmentModel::getAllEquipment() const
 {
     return m_equipment;
+}
+
+void EquipmentModel::createNew()
+{
+    beginResetModel();
+    m_equipment.clear();
+    m_nextId = 1;
+    endResetModel();
+}
+
+bool EquipmentModel::validateData(int column, const QVariant &value) const
+{
+    switch (column) {
+    case 0: // ID - не редактируется
+        return false;
+    case 1: // Model - свободное заполнение
+        return !value.toString().trimmed().isEmpty();
+    case 2: // Type - должен быть из списка
+        {
+            QStringList validTypes = {
+                tr("Excavator"), tr("Bulldozer"), tr("Crane"), 
+                tr("Loader"), tr("Grader"), tr("Other")
+            };
+            return validTypes.contains(value.toString());
+        }
+    case 3: // Year - только 4-значные числа
+        return validateYear(value.toInt());
+    case 4: // Reg. Number - шаблон НН111ННН
+        return validateRegNumber(value.toString());
+    case 5: // Operating Hours - только числа (дробные)
+        {
+            bool ok;
+            double hours = value.toDouble(&ok);
+            return ok && hours >= 0.0;
+        }
+    case 6: // Condition - должен быть из списка
+        {
+            QStringList validConditions = {
+                tr("Excellent"), tr("Good"), tr("Satisfactory"), 
+                tr("Poor"), tr("Critical")
+            };
+            return validConditions.contains(value.toString());
+        }
+    case 7: // Last Maintenance - дата в формате dd.MM.yyyy
+        return validateMaintenanceDate(value.toString());
+    default:
+        return false;
+    }
+}
+
+bool EquipmentModel::validateRegNumber(const QString &regNumber) const
+{
+    // Шаблон Н111НН (1 буква + 3 цифры + 2 буквы)
+    QRegularExpression regex("^[А-ЯA-Z]{1}\\d{3}[А-ЯA-Z]{2}$");
+    return regex.match(regNumber).hasMatch();
+}
+
+bool EquipmentModel::validateYear(int year) const
+{
+    // Год должен быть из 4 цифр
+    return year >= 1900 && year <= 2100;
+}
+
+bool EquipmentModel::validateMaintenanceDate(const QString &dateStr) const
+{
+    // Проверка формата dd.MM.yyyy
+    QDate date = QDate::fromString(dateStr, "dd.MM.yyyy");
+    return date.isValid();
 }

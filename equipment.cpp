@@ -79,7 +79,7 @@ Equipment Equipment::fromCsv(const QString& line)
     int year = parts[3].toInt(&yearOk);
     if (!yearOk || year < 1900 || year > QDate::currentDate().year() + 10) {
         qWarning() << "Invalid year in CSV:" << parts[3];
-        year = QDate::currentDate().year(); // Используем текущий год как fallback
+        year = QDate::currentDate().year();
     }
 
     QString regNumber = parts[4].trimmed();
@@ -88,21 +88,21 @@ Equipment Equipment::fromCsv(const QString& line)
     double operatingHours = parts[5].toDouble(&hoursOk);
     if (!hoursOk || operatingHours < 0) {
         qWarning() << "Invalid operating hours in CSV:" << parts[5];
-        operatingHours = 0.0; // Используем 0 как fallback
+        operatingHours = 0.0;
     }
 
     QString condition = parts[6].trimmed();
 
-    // Улучшенная обработка даты
+    // Обработка даты
     QDate lastMaintenance;
     if (parts[7].trimmed().isEmpty()) {
-        lastMaintenance = QDate::currentDate(); // Используем текущую дату как fallback
+        lastMaintenance = QDate::currentDate();
         qWarning() << "Empty date in CSV, using current date";
     } else {
         lastMaintenance = QDate::fromString(parts[7].trimmed(), "dd.MM.yyyy");
         if (!lastMaintenance.isValid()) {
             qWarning() << "Invalid date in CSV:" << parts[7];
-            lastMaintenance = QDate::currentDate(); // Используем текущую дату как fallback
+            lastMaintenance = QDate::currentDate();
         }
     }
 

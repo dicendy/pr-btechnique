@@ -46,6 +46,7 @@ add_executable(pr-btechnique
     main.cpp
     equipment.h equipment.cpp
     equipmentmodel.h equipmentmodel.cpp
+    equipmentdelegate.h equipmentdelegate.cpp
     mainwindow.h mainwindow.cpp
     addeditdialog.h addeditdialog.cpp
     aboutdialog.h aboutdialog.cpp
