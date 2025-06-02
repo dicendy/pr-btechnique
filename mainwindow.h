@@ -28,6 +28,7 @@
 #include <QSpinBox>
 #include <QLineEdit>
 #include <QDateEdit>
+#include <QTimer>
 #include "equipmentmodel.h"
 #include "settings.h"
 #include "equipmentdelegate.h"
@@ -118,6 +119,7 @@ private slots:
     void onTableSelectionChanged();     ///< Обработка изменения выделения в таблице
     void showColumnFilterMenu(const QPoint& pos); ///< Показ меню фильтрации столбца
     void onHeaderClicked(int logicalIndex); ///< Обработка нажатия на заголовок столбца
+    void performDelayedSearch();        ///< Выполнение поиска с задержкой
 
 public slots:
     /// Открытие нового окна с документом
@@ -132,6 +134,8 @@ private:
     Settings *m_settings;                    ///< Диалог настроек
     QMenu *m_languageMenu;
     QMap<int, QStringList> m_columnFilters;  ///< Активные фильтры по столбцам
+    QTimer *m_searchTimer;                   ///< Таймер для дебаунсинга поиска
+    bool m_searchInProgress;                 ///< Флаг для предотвращения рекурсивных вызовов поиска
 
     bool isModelValid() const;
 

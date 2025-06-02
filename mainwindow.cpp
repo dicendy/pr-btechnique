@@ -17,6 +17,7 @@
 #include <QApplication>
 #include <QValidator>
 #include <QRegularExpressionValidator>
+#include <QTimer>
 
 MultiSelectFilterProxyModel::MultiSelectFilterProxyModel(QObject *parent)
     : QSortFilterProxyModel(parent)
@@ -42,31 +43,80 @@ QStringList MultiSelectFilterProxyModel::getColumnFilters(int column) const
 
 bool MultiSelectFilterProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
 {
-    // Проверяем обычный текстовый фильтр
-    if (!QSortFilterProxyModel::filterAcceptsRow(sourceRow, sourceParent)) {
+    // --- УСИЛЕННАЯ ПРОВЕРКА ИСХОДНОЙ МОДЕЛИ ---
+    QAbstractItemModel* currentSourceModel = sourceModel();
+    if (!currentSourceModel) {
+        qDebug() << "MultiSelectFilterProxyModel::filterAcceptsRow: sourceModel is null, row:" << sourceRow;
         return false;
     }
+
+    // Проверяем валидность индекса строки в контексте текущей исходной модели
+    if (sourceRow < 0 || sourceRow >= currentSourceModel->rowCount(sourceParent)) {
+        qDebug() << "MultiSelectFilterProxyModel::filterAcceptsRow: Invalid row index:" << sourceRow << "for rowCount:" << currentSourceModel->rowCount(sourceParent);
+        return false;
+    }
+
+    // --- КРИТИЧЕСКОЕ ИСПРАВЛЕНИЕ: НЕ ВЫЗЫВАЕМ БАЗОВЫЙ КЛАСС В ОПРЕДЕЛЕННЫХ СЛУЧАЯХ ---
+    // Проверяем, есть ли у нас активные column filters
+    bool hasColumnFilters = !m_columnFilters.isEmpty();
+    bool baseAccepts = true;
     
-    // Проверяем столбцовые фильтры
-    for (auto it = m_columnFilters.constBegin(); it != m_columnFilters.constEnd(); ++it) {
-        int column = it.key();
-        const QStringList &allowedValues = it.value();
-        
-        // Если список фильтров пустой, но он существует, значит скрываем все
-        if (allowedValues.isEmpty()) {
+    // Если нет column filters, то проверяем базовый фильтр
+    if (!hasColumnFilters) {
+        try {
+            baseAccepts = QSortFilterProxyModel::filterAcceptsRow(sourceRow, sourceParent);
+        } catch (...) {
+            qWarning() << "Exception in QSortFilterProxyModel::filterAcceptsRow for row:" << sourceRow;
             return false;
         }
         
-        // Если есть фильтры, проверяем вхождение
-        QModelIndex index = sourceModel()->index(sourceRow, column, sourceParent);
-        QString value = sourceModel()->data(index).toString();
-        
-        if (!allowedValues.contains(value)) {
+        if (!baseAccepts) {
+            return false;
+        }
+    }
+
+    // Проверяем столбцовые фильтры только если они есть
+    if (hasColumnFilters) {
+        for (auto it = m_columnFilters.constBegin(); it != m_columnFilters.constEnd(); ++it) {
+            int column = it.key();
+            const QStringList &allowedValues = it.value();
+
+            // Проверяем валидность номера столбца
+            if (column < 0 || column >= currentSourceModel->columnCount(sourceParent)) {
+                qWarning() << "MultiSelectFilterProxyModel::filterAcceptsRow: Invalid column:" << column << "for columnCount:" << currentSourceModel->columnCount(sourceParent);
+                continue;
+            }
+
+            // Если список фильтров пустой, это означает "не показывать ничего"
+            if (allowedValues.isEmpty()) {
+                return false;
+            }
+
+            QModelIndex index = currentSourceModel->index(sourceRow, column, sourceParent);
+            if (!index.isValid()) {
+                qWarning() << "MultiSelectFilterProxyModel::filterAcceptsRow: Invalid index for row:" << sourceRow << "column:" << column;
+                continue;
+            }
+
+            QString value = currentSourceModel->data(index).toString();
+
+            if (!allowedValues.contains(value)) {
+                return false;
+            }
+        }
+    }
+    
+    // Если есть column filters, проверяем базовый фильтр только в конце
+    if (hasColumnFilters) {
+        try {
+            baseAccepts = QSortFilterProxyModel::filterAcceptsRow(sourceRow, sourceParent);
+        } catch (...) {
+            qWarning() << "Exception in QSortFilterProxyModel::filterAcceptsRow for row:" << sourceRow;
             return false;
         }
     }
     
-    return true;
+    return baseAccepts;
 }
 
 // Определение статического члена (п.16 ТЗ)
@@ -79,6 +129,8 @@ MainWindow::MainWindow(QWidget *parent)
     , m_model(new EquipmentModel(this))
     , m_proxyModel(new MultiSelectFilterProxyModel(this))
     , m_settings(new Settings(this))
+    , m_searchTimer(new QTimer(this))
+    , m_searchInProgress(false)  // Добавляем флаг для предотвращения рекурсии
 {
     ui->setupUi(this);
 
@@ -106,15 +158,32 @@ MainWindow::MainWindow(QWidget *parent)
     setupDragAndDrop();
     setupColumnFilters();
 
+    // Настройка таймера для дебаунсинга поиска
+    m_searchTimer->setSingleShot(true);
+    m_searchTimer->setInterval(300); // 300 мс задержка
+    connect(m_searchTimer, &QTimer::timeout, this, &MainWindow::performDelayedSearch);
+
     // Подключение сигналов для поиска в реальном времени (п.17, п.22 ТЗ)
-    connect(ui->searchEdit, &QLineEdit::textChanged, this, &MainWindow::on_actionFind_triggered);
+    connect(ui->searchEdit, &QLineEdit::textChanged, this, [this]() {
+        // Перезапускаем таймер при каждом изменении текста
+        if (!m_searchInProgress) {
+            m_searchTimer->stop();
+            m_searchTimer->start();
+        }
+    });
     
-    // Подключение сигнала изменения выделения
-    connect(ui->tableView->selectionModel(), &QItemSelectionModel::selectionChanged,
-            this, &MainWindow::onTableSelectionChanged);
+    // Подключение сигнала изменения выделения - убираем автоматический поиск
+    if (ui->tableView->selectionModel()) {
+        connect(ui->tableView->selectionModel(), &QItemSelectionModel::selectionChanged,
+                this, &MainWindow::onTableSelectionChanged);
+    }
 
     // Статус бар
     ui->statusbar->showMessage(tr("Ready"));
+    
+    // Блокируем сигналы во время начальной настройки
+    ui->searchEdit->blockSignals(true);
+    ui->searchEdit->blockSignals(false);
 }
 
 MainWindow::~MainWindow()
@@ -154,6 +223,17 @@ void MainWindow::showColumnFilterMenu(const QPoint& pos)
 
 void MainWindow::showFilterDialog(int column, const QPoint &pos)
 {
+    // Проверяем валидность моделей и предотвращаем вызов во время поиска
+    if (!isModelValid() || m_searchInProgress) {
+        return;
+    }
+    
+    // Проверяем валидность номера столбца
+    if (column < 0 || column >= m_model->columnCount()) {
+        qWarning() << "Invalid column for filter dialog:" << column;
+        return;
+    }
+    
     // Получаем уникальные значения для столбца
     QSet<QString> uniqueValues;
     for (int row = 0; row < m_model->rowCount(); ++row) {
@@ -187,8 +267,8 @@ void MainWindow::showFilterDialog(int column, const QPoint &pos)
     bool allSelected = currentFilters.isEmpty();
 
     // Делаем кнопки управления некликабельными для menu.exec()
-    selectAll->setData("control_button");
-    deselectAll->setData("control_button");
+    selectAll->setData("select_all_button");
+    deselectAll->setData("deselect_all_button");
 
     QList<QAction*> valueActions;
 
@@ -223,22 +303,31 @@ void MainWindow::showFilterDialog(int column, const QPoint &pos)
     });
 
     // Обработка кнопки "Снять выделение" - подключаем к triggered, но не блокируем меню
-    connect(deselectAll, &QAction::triggered, [&valueActions, &menu]() {
+    connect(deselectAll, &QAction::triggered, [&valueActions, &menu, this, column]() {
         for (QAction *action : valueActions) {
             action->setChecked(false);
         }
-        //
+        // Применяем пустой фильтр - скрываем все элементы для этого столбца
+        m_proxyModel->setColumnFilters(column, QStringList());
+        
+        menu.update();
+        menu.repaint();
     });
 
     // Показываем меню и обрабатываем результат
     bool continueLoop = true;
-    while (continueLoop) {
+    int maxIterations = 100; // Защита от бесконечного цикла
+    int iteration = 0;
+    
+    while (continueLoop && iteration < maxIterations) {
+        iteration++;
         QAction *selected = menu.exec(ui->tableView->horizontalHeader()->mapToGlobal(pos));
 
         if (!selected) {
             // Пользователь кликнул вне меню - выходим
             continueLoop = false;
-        } else if (selected->data().toString() == "control_button") {
+        } else if (selected->data().toString() == "select_all_button" || 
+                   selected->data().toString() == "deselect_all_button") {
             // Это кнопка управления - не закрываем меню, продолжаем цикл
             // Действие уже выполнено через connect
             continue;
@@ -264,25 +353,52 @@ void MainWindow::showFilterDialog(int column, const QPoint &pos)
             continueLoop = false;
         }
     }
+    
+    // Проверяем, не был ли достигнут лимит итераций
+    if (iteration >= maxIterations) {
+        qWarning() << "Filter dialog: maximum iterations reached, forcing exit";
+    }
 }
 
 void MainWindow::onTableSelectionChanged()
 {
-    // Обработка изменения выделения для поиска по столбцу
-    QModelIndexList selection = ui->tableView->selectionModel()->selectedColumns();
-    if (!selection.isEmpty()) {
-        int column = selection.first().column();
-        m_proxyModel->setFilterKeyColumn(column);
-        // Применяем текущий поисковый запрос к выбранному столбцу
-        QString searchText = ui->searchEdit->text();
-        if (!searchText.isEmpty()) {
-            m_proxyModel->setFilterFixedString(searchText);
+    // Предотвращаем рекурсивные вызовы
+    if (m_searchInProgress) {
+        return;
+    }
+    
+    // Проверяем валидность моделей перед выполнением операций
+    if (!isModelValid()) {
+        return;
+    }
+    
+    // Проверяем валидность selection model
+    if (!ui->tableView->selectionModel()) {
+        return;
+    }
+    
+    try {
+        // Обработка изменения выделения для информационных целей
+        QModelIndexList selection = ui->tableView->selectionModel()->selectedColumns();
+        if (!selection.isEmpty()) {
+            int column = selection.first().column();
+            
+            // Проверяем валидность номера столбца
+            if (column >= 0 && column < m_model->columnCount()) {
+                // ТОЛЬКО обновляем статус, НЕ применяем фильтр автоматически
+                QVariant headerData = m_model->headerData(column, Qt::Horizontal, Qt::DisplayRole);
+                QString columnName = headerData.isValid() ? headerData.toString() : QString("Column %1").arg(column);
+                ui->statusbar->showMessage(tr("Selected column: %1").arg(columnName), 2000);
+            } else {
+                qWarning() << "Invalid column selected:" << column;
+                ui->statusbar->showMessage(tr("Invalid column selected"), 2000);
+            }
+        } else {
+            ui->statusbar->showMessage(tr("No column selected"), 2000);
         }
-        ui->statusbar->showMessage(tr("Search in column: %1").arg(m_model->headerData(column, Qt::Horizontal, Qt::DisplayRole).toString()), 2000);
-    } else {
-        // Если нет выделенных столбцов, ищем по всем
-        m_proxyModel->setFilterKeyColumn(-1);
-        ui->statusbar->showMessage(tr("Search in all columns"), 2000);
+    } catch (const std::exception &e) {
+        qWarning() << "Error in onTableSelectionChanged:" << e.what();
+        ui->statusbar->showMessage(tr("Selection error"), 2000);
     }
 }
 
@@ -380,16 +496,26 @@ void MainWindow::refreshView()
         qWarning() << "Model or proxy model is null";
         return;
     }
+    
+    // Предотвращаем рекурсивные вызовы
+    if (m_searchInProgress) {
+        return;
+    }
 
     try {
+        // Блокируем сигналы во время обновления для избежания рекурсивных вызовов
+        m_searchInProgress = true;
+        ui->tableView->blockSignals(true);
+        m_proxyModel->blockSignals(true);
+        
         // Сохраняем текущий выбор
         QModelIndex currentIndex = ui->tableView->currentIndex();
 
         // Сбрасываем фильтры и пересортировываем
         m_proxyModel->invalidate();
 
-        // Обновляем модель
-        m_model->layoutChanged();
+        // Обновляем модель - эмитируем сигнал о том, что данные изменились
+        emit m_model->layoutChanged();
 
         // Автоматически подгоняем размеры колонок
         ui->tableView->resizeColumnsToContents();
@@ -435,6 +561,11 @@ void MainWindow::refreshView()
         qWarning() << "Error refreshing view:" << e.what();
         ui->statusbar->showMessage(tr("Error refreshing view"), 3000);
     }
+    
+    // Разблокируем сигналы после завершения обновления
+    ui->tableView->blockSignals(false);
+    m_proxyModel->blockSignals(false);
+    m_searchInProgress = false;
 }
 
 void MainWindow::updateWindowTitle()
@@ -577,8 +708,13 @@ void MainWindow::on_actionAdd_triggered()
 {
     AddEditDialog dialog(this);
     if (dialog.exec() == QDialog::Accepted) {
-        m_model->addEquipment(dialog.getEquipment());
-        refreshView();
+        try {
+            m_model->addEquipment(dialog.getEquipment());
+            ui->statusbar->showMessage(tr("Equipment added successfully"), 2000);
+        } catch (const std::exception &e) {
+            QMessageBox::critical(this, tr("Error"),
+                                  tr("Failed to add equipment: %1").arg(e.what()));
+        }
     }
 }
 
@@ -692,19 +828,26 @@ bool MainWindow::isModelValid() const
 
 void MainWindow::on_actionFind_triggered()
 {
-    // Поиск по выделенному столбцу или по всем столбцам
-    QString term = ui->searchEdit->text();
-    
-    // Если есть выделенные столбцы, ищем в них
-    QModelIndexList selection = ui->tableView->selectionModel()->selectedColumns();
-    if (!selection.isEmpty()) {
-        m_proxyModel->setFilterKeyColumn(selection.first().column());
-    } else {
-        m_proxyModel->setFilterKeyColumn(-1); // Поиск по всем столбцам
+    // Проверка валидности моделей перед выполнением поиска
+    if (!isModelValid()) {
+        qWarning() << "Models are not valid for search operation";
+        return;
     }
     
-    m_proxyModel->setFilterFixedString(term);
+    // Предотвращаем рекурсивные вызовы
+    if (m_searchInProgress) {
+        return;
+    }
+    
+    // Устанавливаем фокус на поле поиска
     ui->searchEdit->setFocus();
+    ui->searchEdit->selectAll();
+    
+    // Если в поле поиска есть текст, выполняем поиск немедленно
+    QString term = ui->searchEdit->text();
+    if (!term.isEmpty()) {
+        performDelayedSearch();
+    }
 }
 
 void MainWindow::on_actionPrint_triggered()
@@ -746,7 +889,7 @@ void MainWindow::switchToEnglish()
     s_translator = new QTranslator();
     if (s_translator->load("translations/app_en.qm")) {
         qApp->installTranslator(s_translator);
-        qDebug() << "English translation loaded successfully";
+        //qDebug() << "English translation loaded successfully";
     } else {
         qDebug() << "Failed to load English translation";
         delete s_translator;
@@ -773,7 +916,7 @@ void MainWindow::switchToRussian()
     s_translator = new QTranslator();
     if (s_translator->load("translations/app_ru.qm")) {
         qApp->installTranslator(s_translator);
-        qDebug() << "Russian translation loaded successfully";
+        //qDebug() << "Russian translation loaded successfully";
     } else {
         qDebug() << "Failed to load Russian translation";
         delete s_translator;
@@ -799,7 +942,7 @@ void MainWindow::switchToGerman()
     s_translator = new QTranslator();
     if (s_translator->load("translations/app_de.qm")) {
         qApp->installTranslator(s_translator);
-        qDebug() << "German translation loaded successfully";
+        //qDebug() << "German translation loaded successfully";
     } else {
         qDebug() << "Failed to load German translation";
         delete s_translator;
@@ -865,18 +1008,113 @@ void MainWindow::dropEvent(QDropEvent *event)
 
 void MainWindow::onHeaderClicked(int logicalIndex)
 {
-    // Выделяем весь столбец при нажатии на заголовок
-    ui->tableView->selectColumn(logicalIndex);
-    
-    // Устанавливаем фильтр для поиска в выбранном столбце
-    m_proxyModel->setFilterKeyColumn(logicalIndex);
-    
-    // Применяем текущий поисковый запрос к выбранному столбцу
-    QString searchText = ui->searchEdit->text();
-    if (!searchText.isEmpty()) {
-        m_proxyModel->setFilterFixedString(searchText);
+    // Предотвращаем рекурсивные вызовы
+    if (m_searchInProgress) {
+        return;
     }
     
-    // Обновляем статус-бар
-    ui->statusbar->showMessage(tr("Search in column: %1").arg(m_model->headerData(logicalIndex, Qt::Horizontal, Qt::DisplayRole).toString()), 2000);
+    // Проверяем валидность моделей
+    if (!isModelValid()) {
+        return;
+    }
+    
+    // Проверяем валидность индекса столбца
+    if (logicalIndex < 0 || logicalIndex >= m_model->columnCount()) {
+        qWarning() << "Invalid column index clicked:" << logicalIndex;
+        return;
+    }
+    
+    try {
+        // Выделяем весь столбец при нажатии на заголовок
+        ui->tableView->selectColumn(logicalIndex);
+        
+        // Устанавливаем фильтр для поиска в выбранном столбце БЕЗ немедленного применения
+        QString searchText = ui->searchEdit->text();
+        
+        // Безопасно получаем заголовок столбца
+        QVariant headerData = m_model->headerData(logicalIndex, Qt::Horizontal, Qt::DisplayRole);
+        QString columnName = headerData.isValid() ? headerData.toString() : QString("Column %1").arg(logicalIndex);
+        
+        if (!searchText.isEmpty()) {
+            ui->statusbar->showMessage(tr("Click search to filter in column: %1").arg(columnName), 3000);
+        } else {
+            ui->statusbar->showMessage(tr("Column selected: %1").arg(columnName), 2000);
+        }
+        
+    } catch (const std::exception &e) {
+        qWarning() << "Error in onHeaderClicked:" << e.what();
+        ui->statusbar->showMessage(tr("Column selection error"), 2000);
+    }
+}
+
+void MainWindow::performDelayedSearch()
+{
+    // Проверка валидности моделей перед выполнением поиска
+    if (!isModelValid()) {
+        qWarning() << "Models are not valid for search operation";
+        return;
+    }
+    
+    if (!m_proxyModel) {
+        qWarning() << "performDelayedSearch: m_proxyModel is null! Cannot perform search.";
+        ui->statusbar->showMessage(tr("Search error: Proxy model not initialized"), 3000);
+        return;
+    }
+
+    // Устанавливаем флаг для предотвращения рекурсии
+    if (m_searchInProgress) {
+        return;
+    }
+    
+    m_searchInProgress = true;
+
+    QString term = ui->searchEdit->text();
+    qDebug() << "performDelayedSearch: Starting search for term:" << term;
+
+    try {
+        // Блокируем сигналы proxy model во время операции
+        m_proxyModel->blockSignals(true);
+        
+        // Определяем, в каком столбце искать
+        int searchColumn = -1; // По умолчанию ищем во всех столбцах
+        
+        if (ui->tableView->selectionModel()) {
+            QModelIndexList selection = ui->tableView->selectionModel()->selectedColumns();
+            if (!selection.isEmpty()) {
+                int column = selection.first().column();
+                // Проверяем валидность номера столбца
+                if (column >= 0 && column < m_model->columnCount()) {
+                    searchColumn = column;
+                }
+            }
+        }
+        
+        // Устанавливаем столбец для поиска
+        m_proxyModel->setFilterKeyColumn(searchColumn);
+        
+        // Применяем фильтр
+        m_proxyModel->setFilterFixedString(term);
+        
+        // Разблокируем сигналы
+        m_proxyModel->blockSignals(false);
+        
+        // Обновляем статус
+        if (searchColumn >= 0) {
+            QVariant headerData = m_model->headerData(searchColumn, Qt::Horizontal, Qt::DisplayRole);
+            QString columnName = headerData.isValid() ? headerData.toString() : QString("Column %1").arg(searchColumn);
+            ui->statusbar->showMessage(tr("Searching in column: %1").arg(columnName), 2000);
+        } else {
+            ui->statusbar->showMessage(tr("Searching in all columns"), 2000);
+        }
+        
+        qDebug() << "performDelayedSearch: Search completed successfully";
+        
+    } catch (const std::exception &e) {
+        qWarning() << "Error during search operation:" << e.what();
+        ui->statusbar->showMessage(tr("Search error occurred"), 3000);
+        // Разблокируем сигналы в случае ошибки
+        m_proxyModel->blockSignals(false);
+    }
+    
+    m_searchInProgress = false;
 }
