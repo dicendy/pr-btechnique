@@ -18,6 +18,8 @@
 #include <QValidator>
 #include <QRegularExpressionValidator>
 #include <QTimer>
+#include <QLibraryInfo>
+#include <QTranslator>
 
 MultiSelectFilterProxyModel::MultiSelectFilterProxyModel(QObject *parent)
     : QSortFilterProxyModel(parent)
@@ -121,6 +123,7 @@ bool MultiSelectFilterProxyModel::filterAcceptsRow(int sourceRow, const QModelIn
 
 // Определение статического члена (п.16 ТЗ)
 QTranslator *MainWindow::s_translator = nullptr;
+QTranslator *MainWindow::s_translator2 = nullptr;
 QList<MainWindow*> MainWindow::s_openWindows;
 
 MainWindow::MainWindow(QWidget *parent)
@@ -184,6 +187,16 @@ MainWindow::MainWindow(QWidget *parent)
     // Блокируем сигналы во время начальной настройки
     ui->searchEdit->blockSignals(true);
     ui->searchEdit->blockSignals(false);
+    
+    // Загружаем язык из настроек при инициализации (п.16, п.20 ТЗ)
+    QString savedLanguage = QSettings().value("language", "ru").toString();
+    if (savedLanguage == "en") {
+        switchToEnglish();
+    } else if (savedLanguage == "de") {
+        switchToGerman();
+    } else {
+        switchToRussian();
+    }
 }
 
 MainWindow::~MainWindow()
@@ -805,10 +818,11 @@ void MainWindow::on_actionDelete_triggered()
     }
 
     int ret = QMessageBox::question(this, tr("Delete Equipment"),
-                                    tr("Are you sure you want to delete equipment:\n%1 (%2)?")
+                                    tr("Are you sure you want to delete equipment?")
                                         .arg(eq.model()).arg(eq.regNumber()),
                                     QMessageBox::Yes | QMessageBox::No,
                                     QMessageBox::No);
+    qDebug() << "Translation for delete message:" << tr("Are you sure you want to delete equipment:\n%1 (%2)?");
 
     if (ret == QMessageBox::Yes) {
         try {
@@ -879,81 +893,166 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::switchToEnglish()
 {
-    // Удаляем текущий переводчик
+    // Удаляем текущие переводчики
     if (s_translator) {
         qApp->removeTranslator(s_translator);
         delete s_translator;
-    }
-
-    // Создаем новый переводчик для английского языка (п.16 ТЗ)
-    s_translator = new QTranslator();
-    if (s_translator->load("translations/app_en.qm")) {
-        qApp->installTranslator(s_translator);
-        //qDebug() << "English translation loaded successfully";
-    } else {
-        qDebug() << "Failed to load English translation";
-        delete s_translator;
         s_translator = nullptr;
     }
+    if (s_translator2) {
+        qApp->removeTranslator(s_translator2);
+        delete s_translator2;
+        s_translator2 = nullptr;
+    }
 
-    // Сохраняем настройку языка (п.20 ТЗ)
+    // 1. Загружаем системные переводы Qt (Yes/No/Cancel и т.д.)
+    s_translator2 = new QTranslator();
+    if (s_translator2->load("qt_en", QLibraryInfo::path(QLibraryInfo::TranslationsPath))) {
+        qApp->installTranslator(s_translator2);
+    } else {
+        qDebug() << "Failed to load system Qt translations from:"
+                 << QLibraryInfo::path(QLibraryInfo::TranslationsPath);
+        delete s_translator2;
+        s_translator2 = nullptr;
+    }
+
+    // 2. Загружаем собственные переводы приложения
+    s_translator = new QTranslator();
+    if (s_translator->load("app_en", ":/i18n")) {
+        qApp->installTranslator(s_translator);
+    } else {
+        // Альтернативный путь - из папки рядом с исполняемым файлом
+        QString appPath = QCoreApplication::applicationDirPath() + "/translations/app_en.qm";
+        if (s_translator->load(appPath)) {
+            qApp->installTranslator(s_translator);
+        } else {
+            qDebug() << "Failed to load app translations from:"
+                     << ":/i18n and" << appPath;
+            delete s_translator;
+            s_translator = nullptr;
+        }
+    }
+
+    // Сохраняем настройку языка
     QSettings().setValue("language", "en");
 
-    // Обновляем интерфейс
-    retranslateUi();
+    // Обновляем интерфейс всех окон
+    for (MainWindow* window : s_openWindows) {
+        if (window) {
+            window->retranslateUi();
+        }
+    }
 }
-
 
 void MainWindow::switchToRussian()
 {
-    // Удаляем текущий переводчик
+    // Удаляем текущие переводчики
     if (s_translator) {
         qApp->removeTranslator(s_translator);
         delete s_translator;
-    }
-    
-    // Создаем новый переводчик для русского языка (п.16 ТЗ)
-    s_translator = new QTranslator();
-    if (s_translator->load("translations/app_ru.qm")) {
-        qApp->installTranslator(s_translator);
-        //qDebug() << "Russian translation loaded successfully";
-    } else {
-        qDebug() << "Failed to load Russian translation";
-        delete s_translator;
         s_translator = nullptr;
     }
-    
-    // Сохраняем настройку языка (п.20 ТЗ)
+    if (s_translator2) {
+        qApp->removeTranslator(s_translator2);
+        delete s_translator2;
+        s_translator2 = nullptr;
+    }
+
+    // 1. Загружаем системные переводы Qt (Yes/No/Cancel и т.д.)
+    s_translator2 = new QTranslator();
+    if (s_translator2->load("qt_ru", QLibraryInfo::path(QLibraryInfo::TranslationsPath))) {
+        qApp->installTranslator(s_translator2);
+    } else {
+        qDebug() << "Failed to load system Qt translations from:"
+                 << QLibraryInfo::path(QLibraryInfo::TranslationsPath);
+        delete s_translator2;
+        s_translator2 = nullptr;
+    }
+
+    // 2. Загружаем собственные переводы приложения
+    s_translator = new QTranslator();
+    qDebug() << "Attempting to load Russian translations from :/i18n";
+    if (s_translator->load("app_ru", ":/i18n")) {
+        qApp->installTranslator(s_translator);
+        qDebug() << "Successfully loaded Russian translations from resources";
+    } else {
+        qDebug() << "Failed to load from resources, trying file path";
+        // Альтернативный путь - из папки рядом с исполняемым файлом
+        QString appPath = QCoreApplication::applicationDirPath() + "/translations/app_ru.qm";
+        qDebug() << "Trying to load from:" << appPath;
+        if (s_translator->load(appPath)) {
+            qApp->installTranslator(s_translator);
+            qDebug() << "Successfully loaded Russian translations from file";
+        } else {
+            qDebug() << "Failed to load app translations from:"
+                     << ":/i18n and" << appPath;
+            delete s_translator;
+            s_translator = nullptr;
+        }
+    }
+
+    // Сохраняем настройку языка
     QSettings().setValue("language", "ru");
-    
-    // Обновляем интерфейс
-    retranslateUi();
+
+    // Обновляем интерфейс всех окон
+    for (MainWindow* window : s_openWindows) {
+        if (window) {
+            window->retranslateUi();
+        }
+    }
 }
 
 void MainWindow::switchToGerman()
 {
-    // Удаляем текущий переводчик
+    // Удаляем текущие переводчики
     if (s_translator) {
         qApp->removeTranslator(s_translator);
         delete s_translator;
-    }
-    
-    // Создаем новый переводчик для немецкого языка (п.16 ТЗ)
-    s_translator = new QTranslator();
-    if (s_translator->load("translations/app_de.qm")) {
-        qApp->installTranslator(s_translator);
-        //qDebug() << "German translation loaded successfully";
-    } else {
-        qDebug() << "Failed to load German translation";
-        delete s_translator;
         s_translator = nullptr;
     }
-    
-    // Сохраняем настройку языка (п.20 ТЗ)
+    if (s_translator2) {
+        qApp->removeTranslator(s_translator2);
+        delete s_translator2;
+        s_translator2 = nullptr;
+    }
+
+    // 1. Загружаем системные переводы Qt (Yes/No/Cancel и т.д.)
+    s_translator2 = new QTranslator();
+    if (s_translator2->load("qt_de", QLibraryInfo::path(QLibraryInfo::TranslationsPath))) {
+        qApp->installTranslator(s_translator2);
+    } else {
+        qDebug() << "Failed to load system Qt translations from:"
+                 << QLibraryInfo::path(QLibraryInfo::TranslationsPath);
+        delete s_translator2;
+        s_translator2 = nullptr;
+    }
+
+    // 2. Загружаем собственные переводы приложения
+    s_translator = new QTranslator();
+    if (s_translator->load("app_de", ":/i18n")) {
+        qApp->installTranslator(s_translator);
+    } else {
+        // Альтернативный путь - из папки рядом с исполняемым файлом
+        QString appPath = QCoreApplication::applicationDirPath() + "/translations/app_de.qm";
+        if (s_translator->load(appPath)) {
+            qApp->installTranslator(s_translator);
+        } else {
+            qDebug() << "Failed to load app translations from:"
+                     << ":/i18n and" << appPath;
+            delete s_translator;
+            s_translator = nullptr;
+        }
+    }
+
+    // Сохраняем настройку языка
     QSettings().setValue("language", "de");
-    
-    // Обновляем интерфейс
-    retranslateUi();
+
+    // Обновляем интерфейс всех окон
+    for (MainWindow* window : s_openWindows) {
+        if (window) {
+            window->retranslateUi();
+        }
+    }
 }
 
 void MainWindow::contextMenuEvent(QContextMenuEvent *event)

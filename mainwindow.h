@@ -128,6 +128,7 @@ public slots:
 private:
     Ui::MainWindow *ui;                      ///< Интерфейс пользователя
     static QTranslator *s_translator;        ///< Глобальный переводчик для динамического переключения (п.16 ТЗ)
+    static QTranslator *s_translator2;       ///< Системный переводчик для динамического переключения
     EquipmentModel *m_model;                 ///< Модель данных (п.15 ТЗ)
     MultiSelectFilterProxyModel *m_proxyModel; ///< Прокси-модель для фильтрации и сортировки (п.17,18,22 ТЗ)
     QString m_currentFile;                   ///< Текущий открытый файл

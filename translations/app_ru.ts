@@ -314,6 +314,10 @@ Developed as coursework project.</source>
         <translation>Удалить технику</translation>
     </message>
     <message>
+        <source>Are you sure you want to delete equipment?</source>
+        <translation>Вы уверены, что хотите удалить оборудование?</translation>
+    </message>
+    <message>
         <source>Find</source>
         <translation>Найти</translation>
     </message>
@@ -472,10 +476,6 @@ Developed as coursework project.</source>
     <message>
         <source>Failed to get equipment data.</source>
         <translation>Не удалось получить данные оборудования.</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to delete equipment:\n%1 (%2)?</source>
-        <translation>Вы уверены, что хотите удалить оборудование:\n%1 (%2)?</translation>
     </message>
     <message>
         <source>Equipment deleted successfully</source>

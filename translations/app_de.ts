@@ -386,8 +386,8 @@ Als Kursarbeitsprojekt entwickelt.</translation>
         <translation>Fehler beim Abrufen der Ausrüstungsdaten.</translation>
     </message>
     <message>
-        <source>Are you sure you want to delete equipment:\n%1 (%2)?</source>
-        <translation>Sind Sie sicher, dass Sie die Ausrüstung löschen möchten:\n%1 (%2)?</translation>
+        <source>Are you sure you want to delete equipment?</source>
+        <translation>Sind Sie sicher, dass Sie die Ausrüstung löschen möchten?</translation>
     </message>
     <message>
         <source>Equipment deleted successfully</source>
