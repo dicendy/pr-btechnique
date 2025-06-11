@@ -445,6 +445,38 @@ Developed as coursework project.</translation>
         <source>Error refreshing view</source>
         <translation>Error refreshing view</translation>
     </message>
+    <message>
+        <source>Click search to filter in column: %1</source>
+        <translation>Click search to filter in column: %1</translation>
+    </message>
+    <message>
+        <source>Column selected: %1</source>
+        <translation>Column selected: %1</translation>
+    </message>
+    <message>
+        <source>Selected column: %1</source>
+        <translation>Selected column: %1</translation>
+    </message>
+    <message>
+        <source>Column selection error</source>
+        <translation>Column selection error</translation>
+    </message>
+    <message>
+        <source>Searching in all columns</source>
+        <translation>Searching in all columns</translation>
+    </message>
+    <message>
+        <source>Search error occurred</source>
+        <translation>Search error occurred</translation>
+    </message>
+    <message>
+        <source>No column selected</source>
+        <translation>No column selected</translation>
+    </message>
+    <message>
+        <source>Selection error</source>
+        <translation>Selection error</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>

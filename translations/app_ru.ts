@@ -497,6 +497,38 @@ Developed as coursework project.</source>
         <source>Please select a cell to delete.</source>
         <translation>Пожалуйста, выберите ячейку для удаления.</translation>
     </message>
+    <message>
+        <source>Click search to filter in column: %1</source>
+        <translation>Нажмите кнопку поиск, чтобы выполнить фильтрацию по столбцу: %1</translation>
+    </message>
+    <message>
+        <source>Column selected: %1</source>
+        <translation>Выбранный столбец: %1</translation>
+    </message>
+    <message>
+        <source>Selected column: %1</source>
+        <translation>Выбранный столбец: %1</translation>
+    </message>
+    <message>
+        <source>Column selection error</source>
+        <translation>Ошибка выбора столбца</translation>
+    </message>
+    <message>
+        <source>Searching in all columns</source>
+        <translation>Поиск по всем столбцам</translation>
+    </message>
+    <message>
+        <source>Search error occurred</source>
+        <translation>Произошла ошибка поиска</translation>
+    </message>
+    <message>
+        <source>No column selected</source>
+        <translation>Ни один столбец не выбран</translation>
+    </message>
+    <message>
+        <source>Selection error</source>
+        <translation>Ошибка выбора</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>

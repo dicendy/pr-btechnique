@@ -409,6 +409,38 @@ Als Kursarbeitsprojekt entwickelt.</translation>
         <source>Please select a cell to delete.</source>
         <translation>Bitte wählen Sie eine Zelle zum Löschen aus.</translation>
     </message>
+    <message>
+        <source>Click search to filter in column: %1</source>
+        <translation>Klicken Sie auf „Suchen“, um nach Spalte %1 zu filtern</translation>
+    </message>
+    <message>
+        <source>Column selected: %1</source>
+        <translation>Ausgewählte Spalte: %1</translation>
+    </message>
+    <message>
+        <source>Selected column: %1</source>
+        <translation>Ausgewählte Spalte: %1</translation>
+    </message>
+    <message>
+        <source>Column selection error</source>
+        <translation>Fehler bei der Spaltenauswahl</translation>
+    </message>
+    <message>
+        <source>Searching in all columns</source>
+        <translation>Suche in allen Spalten</translation>
+    </message>
+    <message>
+        <source>Search error occurred</source>
+        <translation>Ein Suchfehler ist aufgetreten</translation>
+    </message>
+    <message>
+        <source>No column selected</source>
+        <translation>Keine Spalte ausgewählt</translation>
+    </message>
+    <message>
+        <source>Selection error</source>
+        <translation>Auswahlfehler</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
